@@ -93,7 +93,7 @@ npm run format
 ## Local Demo with `web-dev-server`
 
 To start a local development server that serves the basic demo located in
-`demo/index.html`, run:
+`docs/index.html`, run:
 
 ```bash
 npm start
