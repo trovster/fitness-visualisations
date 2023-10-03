@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8" />
+        <title>Fitness Web Components Demo</title>
+        <style>
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                margin: 1rem auto;
+                font-size: 2rem;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                margin: 2.5rem 0 1rem;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+                margin: 2rem 0 1rem;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            @media (min-width: 640px) {
+                h1 {
+                    font-size: 3rem;
+                }
+                h2 {
+                    font-size: 2.2rem;
+                }
+            }
+
+            p {
+                padding: 0 1rem;
+                margin: 0 auto 1rem;
+                max-width: 36rem;
+                text-align: center;
+                font-size: 1.25rem;
+            }
+
+            pre {
+                max-width: 36rem;
+                margin: 0 auto;
+                padding: 1rem;
+                font-size: 1.2rem;
+                background: #d1d5db;
+            }
+
+            .ring-examples {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 2rem;
+                gap: 2rem;
+                justify-content: space-evenly;
+            }
+            .ring-examples div {
+                flex: 1;
+                min-width: 200px;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            fitness-card {
+                margin: 0 auto 3rem;
+            }
+
+            fitness-card.contained {
+                max-width: 730px;
+            }
+
+            fitness-card.background {
+                overflow: hidden;
+                border-radius: 1.2rem;
+                color: #fff;
+                background: #1f2937;
+
+                --fitness-value: #9ca3af;
+            }
+            fitness-card.background::part(header) {
+                padding-top: 1.2rem;
+                padding-bottom: 1.2rem;
+                border-bottom: 2px solid #9ca3af;
+                font-size: 1.1rem;
+            }
+            fitness-card.background::part(summary) {
+                padding-top: 1.2rem;
+                padding-bottom: 1.5rem;
+                border-top: 2px solid #9ca3af;
+            }
+
+            @media (min-width: 640px) {
+                fitness-card.background::part(header) {
+                    font-size: 1.5rem;
+                }
+            }
+
+            /** Themes */
+            .sans-serif {
+                --fitness-font: sans-serif;
+            }
+
+            .alternative {
+                --fitness-ring-move: #30BCED;
+                --fitness-ring-exercise: #303036;
+                --fitness-ring-stand: #DE4D86;
+            }
+
+            .muted,
+            .muted {
+                --fitness-move: #F2B5D4;
+                --fitness-exercise: #AAEFDF;
+                --fitness-stand: #7BDFF2;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="intro">
+            <h1>Fitness Components</h1>
+            <p>This is a demo of the components with default and alternative styles.</p>
+            <p>The base design is based upon Apple Fitness rings.
+            You can use a fully featured card or just the rings.</p>
+        </div>
+
+        <div class="cards">
+            <h2>Cards</h2>
+
+            <p>To use the card, you must create a <code>fitness-card</code> element
+            with the relevant attributes representing the data.</p>
+
+            <p>The <code>date</code> is optional, if there is not set, then the card header
+            is not rendered. <code>steps</code>, <code>distance</code> and <code>flights</code>
+            are also optional – if none are provided, then the card footer is not rendered.</p>
+
+            <p>The <code>distance</code> attribute should be provided in <strong>in meters</strong>.
+            By default, this is converted to <em>miles</em> but you can change this to kilometres
+            using <code>units="km"</code> attribute.</p>
+
+            <pre><code>&#60;fitness-card
+    date="2023-06-04"
+    steps="5258"
+    distance="2455"
+    units="miles"
+    flights="3"
+    move-total="1800"
+    move-goal="1400"
+    exercise-total="20"
+    exercise-goal="30"
+    stand-total="9"
+    stand-goal="12"
+&#62;&#60;/fitness-card&#62;</code></pre>
+
+            <h3>Default</h3>
+            <fitness-card
+                date="2023-06-04"
+                steps="5258"
+                distance="2455"
+                flights="3"
+                move-total="1800"
+                move-goal="1400"
+                exercise-total="20"
+                exercise-goal="30"
+                stand-total="9"
+                stand-goal="12"
+            ></fitness-card>
+
+            <h3>Distance in Kilometers, Custom Background</h3>
+            <fitness-card
+                class="contained background"
+                date="2023-09-21"
+                steps="7511"
+                distance="5505"
+                units="km"
+                flights="6"
+                move-total="500"
+                move-goal="650"
+                exercise-total="24"
+                exercise-goal="30"
+                stand-total="14"
+                stand-goal="12"
+            ></fitness-card>
+
+            <h3>No Date, No Summary, Custom Style &#38; Font</h3>
+            <fitness-card
+                class="contained muted sans-serif"
+                move-total="55"
+                move-goal="650"
+                exercise-total="2"
+                exercise-goal="10"
+                stand-total="4"
+                stand-goal="8"
+            ></fitness-card>
+        </div>
+
+        <div class="rings">
+            <h2>Rings</h2>
+
+            <p>To use the ring, you must create a <code>fitness-ring</code> element
+            with the relevant attributes representing the data.</p>
+
+            <pre><code>&#60;fitness-ring
+    move-total="1800"
+    move-goal="1400"
+    exercise-total="20"
+    exercise-goal="30"
+    stand-total="9"
+    stand-goal="12"
+&#62;&#60;/fitness-ring&#62;</code></pre>
+
+            <div class="ring-examples">
+                <div>
+                    <h3>Default</h3>
+                    <fitness-ring
+                        move-total="500"
+                        move-goal="650"
+                        exercise-total="24"
+                        exercise-goal="30"
+                        stand-total="14"
+                        stand-goal="12"
+                    ></fitness-ring>
+                </div>
+
+                <div>
+                    <h3>Alternative</h3>
+                    <fitness-ring
+                        class="alternative"
+                        move-total="450"
+                        move-goal="550"
+                        exercise-total="55"
+                        exercise-goal="60"
+                        stand-total="9"
+                        stand-goal="12"
+                    ></fitness-ring>
+                </div>
+
+                <div>
+                    <h3>Muted</h3>
+                    <fitness-ring
+                        class="muted"
+                        move-total="450"
+                        move-goal="550"
+                        exercise-total="55"
+                        exercise-goal="60"
+                        stand-total="9"
+                        stand-goal="12"
+                    ></fitness-ring>
+                </div>
+            </div>
+        </div>
+
+        <script type="module">
+            import '../src/FitnessCard.js';
+            import '../src/FitnessRing.js';
+        </script>
+    </body>
+</html>

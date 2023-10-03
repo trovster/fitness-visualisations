@@ -1,0 +1,33 @@
+{
+  "name": "fitness-visualisations",
+  "description": "Two Web Components for fitness visualisations.",
+  "license": "MIT",
+  "author": "Trevor Morris",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "web-dev-server",
+    "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@open-wc/eslint-config": "^9.2.1",
+    "@web/dev-server": "^0.1.34",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.4.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc",
+      "prettier"
+    ],
+    "rules": {
+      "class-methods-use-this": 0
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  }
+}
