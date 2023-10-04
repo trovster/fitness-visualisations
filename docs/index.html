@@ -2,138 +2,66 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
         <title>Fitness Web Components Demo</title>
-        <style>
-            body {
-                padding: 15px;
-            }
 
-            h1 {
-                margin: 1rem auto;
-                font-size: 2rem;
-                text-align: center;
-                font-family: sans-serif;
-            }
-
-            h2 {
-                font-size: 1.6rem;
-                margin: 2.5rem 0 1rem;
-                text-align: center;
-                font-family: sans-serif;
-            }
-
-            h3 {
-                font-size: 1.4rem;
-                margin: 2rem 0 1rem;
-                text-align: center;
-                font-family: sans-serif;
-            }
-
-            @media (min-width: 640px) {
-                h1 {
-                    font-size: 3rem;
-                }
-                h2 {
-                    font-size: 2.2rem;
-                }
-            }
-
-            p {
-                padding: 0 1rem;
-                margin: 0 auto 1rem;
-                max-width: 36rem;
-                text-align: center;
-                font-size: 1.25rem;
-            }
-
-            pre {
-                max-width: 36rem;
-                margin: 0 auto;
-                padding: 1rem;
-                font-size: 1.2rem;
-                background: #d1d5db;
-            }
-
-            .ring-examples {
-                display: flex;
-                flex-wrap: wrap;
-                padding: 2rem;
-                gap: 2rem;
-                justify-content: space-evenly;
-            }
-            .ring-examples div {
-                flex: 1;
-                min-width: 200px;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            fitness-card {
-                margin: 0 auto 3rem;
-            }
-
-            fitness-card.contained {
-                max-width: 730px;
-            }
-
-            fitness-card.background {
-                overflow: hidden;
-                border-radius: 1.2rem;
-                color: #fff;
-                background: #1f2937;
-
-                --fitness-value: #9ca3af;
-            }
-            fitness-card.background::part(header) {
-                padding-top: 1.2rem;
-                padding-bottom: 1.2rem;
-                border-bottom: 2px solid #9ca3af;
-                font-size: 1.1rem;
-            }
-            fitness-card.background::part(summary) {
-                padding-top: 1.2rem;
-                padding-bottom: 1.5rem;
-                border-top: 2px solid #9ca3af;
-            }
-
-            @media (min-width: 640px) {
-                fitness-card.background::part(header) {
-                    font-size: 1.5rem;
-                }
-            }
-
-            /** Themes */
-            .sans-serif {
-                --fitness-font: sans-serif;
-            }
-
-            .alternative {
-                --fitness-ring-move: #30BCED;
-                --fitness-ring-exercise: #303036;
-                --fitness-ring-stand: #DE4D86;
-            }
-
-            .muted,
-            .muted {
-                --fitness-move: #F2B5D4;
-                --fitness-exercise: #AAEFDF;
-                --fitness-stand: #7BDFF2;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css"/>
     </head>
     <body>
         <div class="intro">
-            <h1>Fitness Components</h1>
-            <p>This is a demo of the components with default and alternative styles.</p>
-            <p>The base design is based upon Apple Fitness rings.
-            You can use a fully featured card or just the rings.</p>
+            <h1>Fitness Web Components</h1>
+            <p>
+                This is a demo of the components with default and alternative styles.
+                You can use a fully featured card or just the rings.
+                <span class="note">The default design is inspired by Apple Fitness.</span>
+            </p>
+            <p>
+                You can download code from the
+                <a href="https://github.com/trovster/fitness-visualisations">fitness visualisations</a>
+                repository on GitHub.
+            </p>
+
+            <h2>Web Components</h2>
+            <p>
+                These visualisations are built using
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Components">Web Components</a>
+                and must be imported before they are rendered.
+            </p>
+            <pre><code>import './FitnessCard.js';
+import './FitnessRing.js';</code></pre>
+
+            <h2>Styling</h2>
+            <p>
+                You can control the font and colours of the card and rings using CSS variables.
+            </p>
+
+            <pre><code>--fitness-font: sans-serif;
+
+--fitness-value: #9ca3af;
+--fitness-move: #fa114f;
+--fitness-exercise: #92e82a;
+--fitness-stand: #1eeaef;
+
+--fitness-ring-move: #fa114f;
+--fitness-ring-exercise: #92e82a;
+--fitness-ring-stand: #1eeaef;</code></pre>
+
+            <p>
+                You can target the styling of sections within the card component using the
+                <code>:part</code> pseudo-element.
+            </p>
+
+            <pre><code>fitness-card::part(header) {}
+fitness-card::part(fitness) {}
+fitness-card::part(summary) {}</code></pre>
         </div>
 
         <div class="cards">
             <h2>Cards</h2>
 
-            <p>To use the card, you must create a <code>fitness-card</code> element
-            with the relevant attributes representing the data.</p>
+            <p>To use the card, you must create a <code>&#60;fitness-card&#62;</code>
+            element with the relevant attributes representing the data.</p>
 
             <p>The <code>date</code> is optional, if there is not set, then the card header
             is not rendered. <code>steps</code>, <code>distance</code> and <code>flights</code>
@@ -158,6 +86,8 @@
 &#62;&#60;/fitness-card&#62;</code></pre>
 
             <h3>Default</h3>
+            <p>This is the default card visualisation.</p>
+
             <fitness-card
                 date="2023-06-04"
                 steps="5258"
@@ -172,6 +102,11 @@
             ></fitness-card>
 
             <h3>Distance in Kilometers, Custom Background</h3>
+            <p>
+                This example of the card visualisation shows a custom design.
+                The units have been changed to kilometres.
+            </p>
+
             <fitness-card
                 class="contained background"
                 date="2023-09-21"
@@ -188,8 +123,14 @@
             ></fitness-card>
 
             <h3>No Date, No Summary, Custom Style &#38; Font</h3>
+            <p>
+                This shows the card visualisation with no date or summary values.
+                The font has been changed and the move, exercise and stand colours
+                have been customised.
+            </p>
+
             <fitness-card
-                class="contained muted sans-serif"
+                class="contained white muted sans-serif"
                 move-total="55"
                 move-goal="650"
                 exercise-total="2"
@@ -202,7 +143,7 @@
         <div class="rings">
             <h2>Rings</h2>
 
-            <p>To use the ring, you must create a <code>fitness-ring</code> element
+            <p>To use the ring, you must create a <code>&#60;fitness-ring&#62;</code> element
             with the relevant attributes representing the data.</p>
 
             <pre><code>&#60;fitness-ring
@@ -255,9 +196,15 @@
             </div>
         </div>
 
+        <p class="footer note">
+            Download code from the
+            <a href="https://github.com/trovster/fitness-visualisations">fitness visualisations</a>
+            repository on GitHub.
+        </p>
+
         <script type="module">
-            import '../src/FitnessCard.js';
-            import '../src/FitnessRing.js';
+            import './FitnessCard.js';
+            import './FitnessRing.js';
         </script>
     </body>
 </html>

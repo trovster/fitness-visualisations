@@ -1,0 +1,155 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #27272A;
+    background: #e4e4e7;
+}
+
+body {
+    padding: 1.5rem;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    line-height: 1.5;
+}
+
+h1 {
+    max-width: 38rem;
+    margin: 0 auto 1rem;
+    font-size: 2.25rem;
+    line-height: 1;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: -0.025em;
+}
+
+h2 {
+    max-width: 38rem;
+    margin: 2rem auto 0.5rem;
+    font-size: 1.6rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin: 3rem 0 0;
+    text-align: center;
+}
+h3 + p {
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 1.3rem;
+}
+
+p {
+    max-width: 38rem;
+    margin: 0 auto 1rem;
+}
+.note {
+    color: #6b7280;
+}
+.footer {
+    margin: 2rem auto 0;
+}
+
+pre {
+    overflow: auto;
+    max-width: 38rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #f8f8f2;
+    background: #272822;
+}
+
+code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+.ring-examples {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: space-evenly;
+}
+
+.ring-examples div {
+    flex: 1;
+    min-width: 200px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 40rem) {
+    h1 {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        line-height: 0.75;
+    }
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .intro h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* The Component Styling */
+fitness-card {
+    margin: 0 auto 3rem;
+}
+
+fitness-card.contained {
+    max-width: 730px;
+}
+
+fitness-card.background {
+    overflow: hidden;
+    border-radius: 1.2rem;
+    color: #fff;
+    background: #1f2937;
+
+    --fitness-value: #9ca3af;
+}
+fitness-card.background::part(header) {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid #9ca3af;
+    font-size: 1.1rem;
+}
+fitness-card.background::part(summary) {
+    padding-top: 1.2rem;
+    padding-bottom: 1.5rem;
+    border-top: 2px solid #9ca3af;
+}
+
+@media (min-width: 640px) {
+    fitness-card.background::part(header) {
+        font-size: 1.5rem;
+    }
+}
+
+fitness-card.white {
+    padding: 1rem 0;
+    border-radius: 1.2rem;
+    background: #fff;
+}
+
+/** Theme Colours */
+.sans-serif {
+    --fitness-font: sans-serif;
+}
+
+.alternative {
+    --fitness-ring-move: #30BCED;
+    --fitness-ring-exercise: #303036;
+    --fitness-ring-stand: #DE4D86;
+}
+
+.muted,
+.muted {
+    --fitness-move: #F2B5D4;
+    --fitness-exercise: #AAEFDF;
+    --fitness-stand: #7BDFF2;
+}
