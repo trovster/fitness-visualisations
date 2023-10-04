@@ -29,20 +29,22 @@ export default class FitnessCard extends HTMLElement {
     wrapper.innerHTML = this.render();
     this.shadow.appendChild(wrapper);
 
-    this.observer = new IntersectionObserver(
-      elements => {
-        elements.forEach(element => {
-          if (element.isIntersecting) {
-            element.target.classList.add('visible');
-          } else {
-            element.target.classList.remove('visible');
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver(
+        elements => {
+          elements.forEach(element => {
+            if (element.isIntersecting) {
+              element.target.classList.add('visible');
+            } else {
+              element.target.classList.remove('visible');
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    this.observer.observe(wrapper);
+      this.observer.observe(wrapper);
+    }
   }
 
   disconnectedCallback() {
@@ -361,4 +363,6 @@ export default class FitnessCard extends HTMLElement {
   }
 }
 
-window.customElements.define('fitness-card', FitnessCard);
+if ('customElements' in window) {
+  window.customElements.define('fitness-card', FitnessCard);
+}
