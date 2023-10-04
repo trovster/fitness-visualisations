@@ -142,7 +142,7 @@ export default class FitnessRing extends HTMLElement {
             r="16"
             class="total"
             stroke-linecap="round"
-            stroke-dasharray="10, 100"
+            stroke-dasharray="100, 100"
             filter="url(#shadow-move)"
           ></circle>
           <filter id="shadow-move">
@@ -170,7 +170,7 @@ export default class FitnessRing extends HTMLElement {
             r="16"
             class="total"
             stroke-linecap="round"
-            stroke-dasharray="10, 100"
+            stroke-dasharray="100, 100"
             filter="url(#shadow-exercise)"
           ></circle>
           <filter id="shadow-exercise">
@@ -198,7 +198,7 @@ export default class FitnessRing extends HTMLElement {
             r="16"
             class="total"
             stroke-linecap="round"
-            stroke-dasharray="10, 100"
+            stroke-dasharray="100, 100"
             filter="url(#shadow-stand)"
           ></circle>
           <filter id="shadow-stand">

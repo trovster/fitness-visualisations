@@ -34,6 +34,7 @@ import './FitnessRing.js';</code></pre>
             <h2>Styling</h2>
             <p>
                 You can control the font and colours of the card and rings using CSS variables.
+                The <code>--fitness-value</code> controls the colour of the <em>values</em> in the footer.
             </p>
 
             <pre><code>--fitness-font: sans-serif;
@@ -53,8 +54,9 @@ import './FitnessRing.js';</code></pre>
             </p>
 
             <pre><code>fitness-card::part(header) {}
-fitness-card::part(fitness) {}
-fitness-card::part(summary) {}</code></pre>
+fitness-card::part(main) {}
+fitness-card::part(ring) {}
+fitness-card::part(footer) {}</code></pre>
         </div>
 
         <div class="cards">
@@ -122,9 +124,9 @@ fitness-card::part(summary) {}</code></pre>
                 stand-goal="12"
             ></fitness-card>
 
-            <h3>No Date, No Summary, Custom Style &#38; Font</h3>
+            <h3>No Date, No Footer, Custom Style &#38; Font</h3>
             <p>
-                This shows the card visualisation with no date or summary values.
+                This shows the card visualisation with no date or footer values.
                 The font has been changed and the move, exercise and stand colours
                 have been customised.
             </p>

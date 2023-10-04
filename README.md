@@ -27,7 +27,7 @@ must be imported before the custom elements can be used.
 
 Both the card and ring require the move, exercise and stand totals and goals.
 The card has additional optional values. If you include the date, it appears as
-a header. The `steps`, `distance` and `flights` data appear in the summary
+a header. The `steps`, `distance` and `flights` data appear in the footer
 section. The distance attribute should be provided in **in meters**. By default,
 this is converted to *miles* but you can change this to kilometres using
 `units="km"`.
@@ -58,6 +58,7 @@ this is converted to *miles* but you can change this to kilometres using
 ```
 
 You can control the font and colours of the card and rings using CSS variables.
+The `--fitness-value` controls the colour of the *values* in the footer.
 
 ```css
 --fitness-font: sans-serif;
@@ -77,8 +78,9 @@ You can target the styling of sections within the card component using the
 
 ```css
 fitness-card::part(header) {}
-fitness-card::part(fitness) {}
-fitness-card::part(summary) {}
+fitness-card::part(main) {}
+fitness-card::part(ring) {}
+fitness-card::part(footer) {}
 ```
 
 ## Development

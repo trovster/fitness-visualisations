@@ -68,7 +68,7 @@ export default class FitnessCard extends HTMLElement {
   // Check attributes exist.
   hasHeader = () => this.getAttribute('date');
 
-  hasSummary = () =>
+  hasFooter = () =>
     this.getAttribute('steps') ||
     this.getAttribute('distance') ||
     this.getAttribute('flights');
@@ -191,7 +191,7 @@ export default class FitnessCard extends HTMLElement {
         font-size: 1.25rem;
         text-align: center;
       }
-      [part="fitness"] {
+      [part="main"] {
         display: flex;
         margin: 1rem 0;
         padding: 0 1rem;
@@ -199,11 +199,11 @@ export default class FitnessCard extends HTMLElement {
         align-items: center;
         justify-content: space-evenly;
       }
-      [part="summary"] {
+      [part="footer"] {
         margin: 1rem 0 0;
         padding: 0 0.5rem 1rem;
       }
-      [part="summary"] dl {
+      [part="footer"] dl {
         display: flex;
         flex-direction: column;
         items-align: center;
@@ -216,7 +216,7 @@ export default class FitnessCard extends HTMLElement {
         max-width: 360px;
       }
 
-      @media (min-width: 640px) {
+      @media (min-width: 40rem) {
         dl {
           line-height: 1.1;
         }
@@ -229,19 +229,19 @@ export default class FitnessCard extends HTMLElement {
         [part="header"] {
           font-size: 1.66rem;
         }
-        [part="fitness"] {
+        [part="main"] {
           flex-direction: row;
         }
-        [part="fitness"] dl {
+        [part="main"] dl {
           text-align: left;
         }
-        [part="summary"] dl {
+        [part="footer"] dl {
           flex-direction: row;
         }
-        [part="summary"] dl > div {
+        [part="footer"] dl > div {
           margin-bottom: 0;
         }
-        [part="summary"] dl dt {
+        [part="footer"] dl dt {
           margin-bottom: 0.25rem;
         }
         fitness-ring {
@@ -250,7 +250,7 @@ export default class FitnessCard extends HTMLElement {
         }
       }
 
-      @media (min-width: 870px) {
+      @media (min-width: 54rem) {
         dt {
           font-size: 1.5rem;
         }
@@ -328,10 +328,10 @@ export default class FitnessCard extends HTMLElement {
   `
       : '';
 
-  summary = () =>
-    this.hasSummary()
+  footer = () =>
+    this.hasFooter()
       ? `
-    <div part="summary">
+    <div part="footer">
       <dl>
         ${this.steps()}
         ${this.distance()}
@@ -345,10 +345,11 @@ export default class FitnessCard extends HTMLElement {
     return `
       ${this.header()}
 
-      <div part="fitness">
+      <div part="main">
         ${this.stats()}
 
         <fitness-ring
+          part="ring"
           move-total="${this.getAttribute('move-total')}"
           move-goal="${this.getAttribute('move-goal')}"
           exercise-total="${this.getAttribute('exercise-total')}"
@@ -358,7 +359,7 @@ export default class FitnessCard extends HTMLElement {
         ></fitness-ring>
       </div>
 
-      ${this.summary()}
+      ${this.footer()}
     `;
   }
 }
