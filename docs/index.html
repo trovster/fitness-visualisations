@@ -126,9 +126,9 @@ fitness-card::part(footer) {}</code></pre>
 
             <h3>No Date, No Footer, Custom Style &#38; Font</h3>
             <p>
-                This shows the card visualisation with no date or footer values.
-                The font has been changed and the move, exercise and stand colours
-                have been customised.
+                This shows the card visualisation with a custom header slot instead
+                of a date and no footer values. The font has been changed and the
+                move, exercise and stand colours have been customised.
             </p>
 
             <fitness-card
@@ -139,7 +139,9 @@ fitness-card::part(footer) {}</code></pre>
                 exercise-goal="10"
                 stand-total="4"
                 stand-goal="8"
-            ></fitness-card>
+            >
+                <div slot="header">Fitness for 22nd August 2023</div>
+            </fitness-card>
         </div>
 
         <div class="rings">

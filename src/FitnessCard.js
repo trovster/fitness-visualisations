@@ -271,7 +271,7 @@ export default class FitnessCard extends HTMLElement {
       ${this.date(this.getAttribute('date'))}
     </div>
   `
-      : '';
+      : '<slot part="header" name="header"></slot>';
 
   stats = () => `
     <dl part="stats">
