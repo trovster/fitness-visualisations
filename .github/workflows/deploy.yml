@@ -28,10 +28,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: Build
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
+
+      - name: Build
         run: npm run build
 
       - name: Upload artifact
