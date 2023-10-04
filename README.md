@@ -2,9 +2,9 @@
 
 # Fitness Components
 
-This provides two Web Components for fitness visualisations. The default design
-is inspired by Apple Fitness. You can use a fully featured card or just the
-rings.
+This provides two Web Components for fitness visualisations. The default ring
+design is inspired by Apple Fitness. You can use a fully featured card or just
+the rings.
 
 ## Installation
 
@@ -25,7 +25,7 @@ must be imported before the custom elements can be used.
 </script>
 ```
 
-Both the card and ring require the move, exercise and stand totals and goals.
+Both the card and ring require the `move`, `exercise` and `stand` totals and goals.
 The card has additional optional values. If you include the date, it appears as
 a header. The `steps`, `distance` and `flights` data appear in the footer
 section. The distance attribute should be provided in **in meters**. By default,
@@ -55,6 +55,15 @@ this is converted to *miles* but you can change this to kilometres using
   stand-total="0"
   stand-goal="0"
 ></fitness-ring>
+```
+
+You can also provide a custom header by using the named slot. If a `date`
+attribute is set, then this will be used it.
+
+```html
+<fitness-card>
+  <div slot="header">The Custom Header</div>
+</fitness-card>
 ```
 
 You can control the font and colours of the card and rings using CSS variables.
