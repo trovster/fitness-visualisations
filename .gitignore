@@ -9,16 +9,8 @@
 /node_modules/
 /npm-debug.log
 
-## testing
-/coverage/
-
 ## temp folders
 /.tmp/
 
 # build
-/_site/
-/dist/
-/out-tsc/
-
-storybook-static
-custom-elements.json
+/docs/*.js

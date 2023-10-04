@@ -1,15 +1,30 @@
 {
-  "name": "fitness-visualisations",
-  "description": "Two Web Components for fitness visualisations.",
-  "license": "MIT",
-  "author": "Trevor Morris",
+  "name": "@trovster/fitness-visualisations",
   "version": "1.0.0",
+  "description": "Two Web Components for fitness visualisations.",
+  "keywords": [
+    "fitness",
+    "visualisations",
+    "web component"
+  ],
+  "homepage": "https://trovster.github.io/fitness-visualisations/",
+  "repository": {
+    "type" : "git",
+    "url" : "git+https://github.com/trovster/fitness-visualisations.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name" : "Trevor Morris",
+    "url" : "https://www.trovster.com"
+  },
   "scripts": {
+    "prestart": "npm run copy",
     "start": "web-dev-server",
+    "build": "npm run copy",
+    "copy": "node -e \"const fs = require('fs'); fs.copyFile('./src/FitnessRing.js', './docs/FitnessRing.js', function () {}); fs.copyFile('./src/FitnessCard.js', './docs/FitnessCard.js', function () {});\"",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore"
   },
-  "dependencies": {},
   "devDependencies": {
     "@open-wc/eslint-config": "^9.2.1",
     "@web/dev-server": "^0.1.34",
