@@ -40,7 +40,8 @@ h3 + p {
     font-size: 1.3rem;
 }
 
-p {
+p,
+dl {
     max-width: 38rem;
     margin: 0 auto 1rem;
 }
@@ -49,6 +50,13 @@ p {
 }
 .footer {
     margin: 2rem auto 0;
+}
+dd {
+    margin-bottom: 0.5rem;
+    color: #6b7280;
+}
+dd + dd {
+    margin-top: -0.5rem;
 }
 
 pre {
@@ -65,23 +73,21 @@ code {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-.ring-examples {
+#ring-examples {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
     gap: 2rem;
     justify-content: space-evenly;
 }
-
-.ring-examples h3 {
+#ring-examples h3 {
     margin-bottom: 0.75rem;
 }
-.ring-examples h3 + p {
+#ring-examples h3 + p {
     margin-top: -1rem;
     margin-bottom: 0.75rem;
 }
-
-.ring-examples div {
+#ring-examples div {
     flex: 1;
     min-width: 200px;
     max-width: 400px;
@@ -106,6 +112,9 @@ code {
 /* The Component Styling */
 fitness-card {
     margin: 0 auto 3rem;
+}
+h1 + fitness-card {
+    margin-bottom: 1.5rem;
 }
 
 fitness-card.contained {

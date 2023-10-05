@@ -77,10 +77,11 @@ export default class FitnessCard extends HTMLElement {
   distanceValue() {
     switch (this.units()) {
       case 'km':
-      case 'kilometers':
       case 'kilometres':
+      case 'kilometers':
         return (this.getAttribute('distance') / 1000).toFixed(2);
 
+      case 'mi':
       case 'miles':
         return (this.getAttribute('distance') / 1609.344).toFixed(2);
 
@@ -92,9 +93,11 @@ export default class FitnessCard extends HTMLElement {
   distanceUnit() {
     switch (this.units()) {
       case 'km':
+      case 'kilometres':
       case 'kilometers':
-        return 'Kilometers';
+        return 'Kilometres';
 
+      case 'mi':
       case 'miles':
         return 'Miles';
 
@@ -106,9 +109,11 @@ export default class FitnessCard extends HTMLElement {
   distanceShorthand() {
     switch (this.units()) {
       case 'km':
+      case 'kilometres':
       case 'kilometers':
         return 'km';
 
+      case 'mi':
       case 'miles':
         return 'mi';
 

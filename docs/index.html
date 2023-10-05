@@ -11,10 +11,35 @@
     <body>
         <div class="intro">
             <h1>Fitness Web Components</h1>
+
+            <fitness-card
+                class="contained background"
+                date="2023-09-14"
+                steps="8409"
+                distance="5505"
+                flights="12"
+                move-total="612"
+                move-goal="650"
+                exercise-total="27"
+                exercise-goal="30"
+                stand-total="10"
+                stand-goal="12"
+            >
+                <svg slot="icon-move" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
+                </svg>
+                <svg slot="icon-exercise" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
+                </svg>
+                <svg slot="icon-stand" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
+                </svg>
+            </fitness-card>
+
             <p>
                 This is a demo of the fitness card and activity ring components,
                 with default and alternative styles. You can use a fully featured
-                “fitness card” or just the activity rings.
+                fitness card or just the activity rings.
                 <span class="note">The default activity ring design is inspired by Apple Fitness.</span>
             </p>
             <p>
@@ -27,19 +52,27 @@
             <p>
                 These visualisations are built using
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Components">Web Components</a>
-                and must be imported before they are rendered.
+                and must be imported before they are rendered. If you are using the
+                fitness card, then you do not need to import the activity ring.
             </p>
-            <pre><code>import './FitnessCard.js';
+
+            <pre><code class="javascript">import './FitnessCard.js';
 import './FitnessRing.js';</code></pre>
 
             <h2>Styling</h2>
             <p>
-                The typeface and colours of the text and rings can be altered using CSS
+                The typeface and colours of the text and rings can be changed using CSS
                 variables. The <code>--fitness-value</code> controls the colour of
                 the <em>values</em> in the footer.
             </p>
+            <p>
+                The colours of the fitness card values are linked to the ring colours,
+                so they can not be configured independently. To change the fitness
+                card colours you must use the CSS variable without the <code>-ring</code>
+                value.
+            </p>
 
-            <pre><code>--fitness-font: sans-serif;
+            <pre><code class="css">--fitness-font: sans-serif;
 
 --fitness-value: #9ca3af;
 --fitness-move: #fa114f;
@@ -50,9 +83,14 @@ import './FitnessRing.js';</code></pre>
 --fitness-ring-exercise: #92e82a;
 --fitness-ring-stand: #1eeaef;</code></pre>
 
-            <p>If you provide icons, they can be styled using `--fitness-icon` CSS variable.</p>
+            <p>
+                If you provide icons, they can be styled using
+                <code>--fitness-icon</code> CSS variable.
+                You can target each icon independently by using the appropriate
+                <code>[slot]</code> selector and setting the CSS variable.
+            </p>
 
-            <pre><code>fitness-ring [slot="icon-move"] {
+            <pre><code class="css">fitness-ring [slot="icon-move"] {
     --fitness-icon: #B31162;
 }
 fitness-ring [slot="icon-exercise"] {
@@ -63,35 +101,69 @@ fitness-ring [slot="icon-stand"] {
 }</code></pre>
 
             <p>
-                You can target the styling of sections within the card component using the
-                <code>:part</code> pseudo-element.
+                You can target the styling of sections within the fitness card
+                component using the <code>:part</code> pseudo-element.
             </p>
 
-            <pre><code>fitness-card::part(header) {}
+            <pre><code class="css">fitness-card::part(header) {}
 fitness-card::part(main) {}
 fitness-card::part(ring) {}
 fitness-card::part(footer) {}</code></pre>
         </div>
 
-        <div class="cards">
+        <div id="cards">
             <h2>Cards</h2>
 
-            <p>To use the card, you must create a <code>&#60;fitness-card&#62;</code>
-            element with the relevant attributes representing the data.</p>
+            <p>
+                To use the fitness card you must create a <code>&#60;fitness-card&#62;</code>
+                element with the relevant attributes representing the data. The following
+                attributes are required:
+            </p>
 
-            <p>The <code>date</code> is optional, if there is not set, then the card header
-            is not rendered. <code>steps</code>, <code>distance</code> and <code>flights</code>
-            are also optional – if none are provided, then the card footer is not rendered.</p>
+            <dl id="required-attributes">
+                <dt><code>move-total="integer"</code></dt>
+                <dd>The achieved “move” value.</dd>
+                <dt><code>move-goal="integer"</code></dt>
+                <dd>The goal for the “move” value.</dd>
+                <dd>Represented in kilocalories.</dd>
 
-            <p>The <code>distance</code> attribute should be provided in <strong>in meters</strong>.
-            By default, this is converted to <em>miles</em> but you can change this to kilometres
-            using <code>units="km"</code> attribute.</p>
+                <dt><code>exercise-total="integer"</code></dt>
+                <dd>The achieved “exercise” value.</dd>
+                <dt><code>exercise-goal="integer"</code></dt>
+                <dd>The goal for the “exercise” value.</dd>
+                <dd>Represented in either miles or kilometres.</dd>
+
+                <dt><code>stand-total="integer"</code></dt>
+                <dd>The achieved “stand” value.</dd>
+                <dt><code>stand-goal="integer"</code></dt>
+                <dd>The goal for the “stand” value.</dd>
+                <dd>Represented in minutes.</dd>
+            </dl>
+
+            <p>
+                The <code>date</code> is <em>optional</em>. The value <strong>must</strong>
+                be in a format that can be parsed by the
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object in JavaScript</a>.
+                If it is not set, then the card header is not rendered.
+            </p>
+
+            <p>
+                <code>steps</code>, <code>distance</code> and <code>flights</code>
+                values are also <em>optional</em>. If none of these values are
+                provided, then the card footer is not rendered.
+            </p>
+
+            <p>
+                The <code>distance</code> attribute should be provided in <strong>in meters</strong>.
+                By default, this is converted to <em>miles</em> but you can change this to kilometres
+                using the <code>units="km"</code> attribute.
+            </p>
 
             <pre><code>&#60;fitness-card
     date="2023-06-04"
     steps="5258"
     distance="2455"
-    units="miles"
+    units="mi"
     flights="3"
     move-total="1800"
     move-goal="1400"
@@ -101,10 +173,11 @@ fitness-card::part(footer) {}</code></pre>
     stand-goal="12"
 &#62;&#60;/fitness-card&#62;</code></pre>
 
-            <h3>Default</h3>
+            <h3>Default Visualisation</h3>
             <p>
-                This is the default card visualisation. There is not maximum width set for the card
-                as the components are designed to fit within any existing design.
+                This is the default fitness card visualisation. There is no maximum
+                width set for the card as the components are designed to fit within
+                any existing design.
             </p>
 
             <fitness-card
@@ -120,11 +193,13 @@ fitness-card::part(footer) {}</code></pre>
                 stand-goal="12"
             ></fitness-card>
 
-            <h3>Distance in Kilometers, Custom Background &#38; Icons</h3>
+            <h3>Distance in Kilometres, Custom Background &#38; Icons</h3>
             <p>
-                This example of the card visualisation shows a custom design.
+                This example of the fitness card visualisation shows a custom design,
+                <span class="note">inspired by the Apple Fitness interface</span>.
                 The background, header and footer have been styled in CSS.
-                The units have been changed to kilometres and icons have been added.
+                The units have been changed to kilometres and mini
+                <a href="https://heroicons.com">Heroicons</a> icons have been added.
             </p>
 
             <fitness-card
@@ -154,11 +229,12 @@ fitness-card::part(footer) {}</code></pre>
 
             <h3>Header Text, No Footer, Custom Style</h3>
             <p>
-                This shows the card visualisation with a custom header slot and
-                no footer. The text for “exercise” and “stand” have been altered.
+                This shows the fitness card visualisation with a custom header text and
+                no footer. The text for “exercise” and “stand” have been changed.
                 The <code>replayable</code> attribute has been set, which allows
                 the animation to be replayed when the rings are clicked.
-                The typeface has been changed and the colours have been customised.
+                The font has been updated to a sans-serif typeface and the
+                colours have been customised.
             </p>
 
             <fitness-card
@@ -177,11 +253,16 @@ fitness-card::part(footer) {}</code></pre>
             </fitness-card>
         </div>
 
-        <div class="rings">
+        <div id="rings">
             <h2>Rings</h2>
 
-            <p>To use the ring, you must create a <code>&#60;fitness-ring&#62;</code> element
-            with the relevant attributes representing the data.</p>
+            <p>
+                To use the activity ring, you must create a
+                <code>&#60;fitness-ring&#62;</code> element
+                with the relevant attributes representing the data.
+                This component has the same required attributes as the
+                fitness card.
+            </p>
 
             <pre><code>&#60;fitness-ring
     move-total="1800"
@@ -192,7 +273,7 @@ fitness-card::part(footer) {}</code></pre>
     stand-goal="12"
 &#62;&#60;/fitness-ring&#62;</code></pre>
 
-            <div class="ring-examples">
+            <div id="ring-examples">
                 <div>
                     <h3>Default</h3>
                     <p>The regular ring design</p>

@@ -3,7 +3,7 @@
 # Fitness Components
 
 This provides two Web Components for fitness visualisations. You can use a fully
-featured “fitness card” or just the activity rings on their own. The default
+featured fitness card or just the activity rings on their own. The default
 activity ring design is inspired by Apple Fitness.
 
 ## Installation
@@ -16,7 +16,8 @@ npm install git+https://github.com/trovster/fitness-visualisations.git --save
 
 These are [Web
 Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_Components) and
-must be imported before the custom elements can be used.
+must be imported before the custom elements can be used. If you are using the
+fitness card, then you do not need to import the activity ring.
 
 ```html
 <script type="module">
@@ -79,9 +80,13 @@ reverse, then completed again.
 
 ### Styling
 
-The typeface and colours of the text and rings can be altered using CSS
+The typeface and colours of the text and rings can be changed using CSS
 variables. The `--fitness-value` controls the colour of the *values* in the
 footer.
+
+The colours of the fitness card values are linked to the ring colours, so they
+can not be configured independently. To change the fitness card colours you must
+use the CSS variable without the `-ring` value.
 
 ```css
 --fitness-font: sans-serif;
@@ -97,6 +102,8 @@ footer.
 ```
 
 If you provide icons, they can be styled using `--fitness-icon` CSS variable.
+You can target each icon independently by using the appropriate `[slot]`
+selector and setting the CSS variable.
 
 ```css
 fitness-ring [slot="icon-move"] {
@@ -110,8 +117,8 @@ fitness-ring [slot="icon-stand"] {
 }
 ```
 
-You can target the styling of sections within the fitness card component using
-the `::part` pseudo-element.
+You can target the styling of sections within the fitness card visualisation
+using the `::part` pseudo-element.
 
 ```css
 fitness-card::part(header) {}
