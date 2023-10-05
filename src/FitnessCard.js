@@ -186,6 +186,7 @@ export default class FitnessCard extends HTMLElement {
         letter-spacing: 0;
       }
       [part="header"] {
+        display: block;
         margin: 0 0 1rem;
         padding: 1rem 0.5rem 0;
         font-size: 1.25rem;
@@ -200,6 +201,7 @@ export default class FitnessCard extends HTMLElement {
         justify-content: space-evenly;
       }
       [part="footer"] {
+        display: block;
         margin: 1rem 0 0;
         padding: 0 0.5rem 1rem;
       }
@@ -264,14 +266,7 @@ export default class FitnessCard extends HTMLElement {
     `;
   }
 
-  header = () =>
-    this.hasHeader()
-      ? `
-    <div part="header">
-      ${this.date(this.getAttribute('date'))}
-    </div>
-  `
-      : '<slot part="header" name="header"></slot>';
+  header = () => `<slot part="header" name="header">${this.hasHeader() ? this.date(this.getAttribute('date')) : ''}</slot>`;
 
   stats = () => `
     <dl part="stats">
