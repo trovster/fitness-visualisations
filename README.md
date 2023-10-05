@@ -69,6 +69,10 @@ the text for “move”, “exercise” and “stand”.
 </fitness-card>
 ```
 
+The activity rings animation can be replayed when using the `replayable="true"`
+attribute. When the activity rings are clicked, the animation is replayed in
+reverse, then completed again.
+
 The typeface and colours of the text and rings can be altered using CSS
 variables. The `--fitness-value` controls the colour of the *values* in the
 footer.

@@ -40,7 +40,7 @@ export default class FitnessRing extends HTMLElement {
     }
 
     wrapper.addEventListener('click', () => {
-      if (wrapper.classList.contains('complete')) {
+      if (this.replayable() && wrapper.classList.contains('complete')) {
         wrapper.classList.add('reset');
         wrapper.classList.remove('complete');
       }
@@ -66,6 +66,8 @@ export default class FitnessRing extends HTMLElement {
   disconnectedCallback() {
     this.observer.disconnect();
   }
+
+  replayable =() => this.getAttribute('replayable') && this.getAttribute('replayable') === 'true';
 
   percentage = (total = 0, goal = 100, max = 100) =>
     Math.min(Math.floor((total / goal) * 100), max);

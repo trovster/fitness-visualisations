@@ -348,6 +348,7 @@ export default class FitnessCard extends HTMLElement {
 
         <fitness-ring
           part="ring"
+          replayable="${this.getAttribute('replayable')}"
           move-total="${this.getAttribute('move-total')}"
           move-goal="${this.getAttribute('move-goal')}"
           exercise-total="${this.getAttribute('exercise-total')}"
