@@ -156,11 +156,14 @@ fitness-card::part(footer) {}</code></pre>
             <p>
                 This shows the card visualisation with a custom header slot and
                 no footer. The text for “exercise” and “stand” have been altered.
+                The <code>replayable</code> attribute has been set, which allows
+                the animation to be replayed when the rings are clicked.
                 The typeface has been changed and the colours have been customised.
             </p>
 
             <fitness-card
                 class="contained white muted sans-serif"
+                replayable="true"
                 move-total="55"
                 move-goal="650"
                 exercise-total="2"
@@ -203,9 +206,10 @@ fitness-card::part(footer) {}</code></pre>
                     ></fitness-ring>
                 </div>
                 <div>
-                    <h3>Default</h3>
+                    <h3>Replayable</h3>
                     <p>With icons</p>
                     <fitness-ring
+                        replayable="true"
                         move-total="500"
                         move-goal="650"
                         exercise-total="24"
