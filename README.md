@@ -86,7 +86,7 @@ footer.
 --fitness-ring-stand: #1eeaef;
 ```
 
-If you provide icons, they can be styled using `--fitness-icon`.
+If you provide icons, they can be styled using `--fitness-icon` CSS variable.
 
 ```css
 fitness-ring [slot="icon-move"] {

@@ -34,8 +34,9 @@ import './FitnessRing.js';</code></pre>
 
             <h2>Styling</h2>
             <p>
-                You can control the font and colours of the card and rings using CSS variables.
-                The <code>--fitness-value</code> controls the colour of the <em>values</em> in the footer.
+                The typeface and colours of the text and rings can be altered using CSS
+                variables. The <code>--fitness-value</code> controls the colour of
+                the <em>values</em> in the footer.
             </p>
 
             <pre><code>--fitness-font: sans-serif;
@@ -48,6 +49,18 @@ import './FitnessRing.js';</code></pre>
 --fitness-ring-move: #fa114f;
 --fitness-ring-exercise: #92e82a;
 --fitness-ring-stand: #1eeaef;</code></pre>
+
+            <p>If you provide icons, they can be styled using `--fitness-icon` CSS variable.</p>
+
+            <pre><code>fitness-ring [slot="icon-move"] {
+    --fitness-icon: #B31162;
+}
+fitness-ring [slot="icon-exercise"] {
+    --fitness-icon: #1FAD8F;
+}
+fitness-ring [slot="icon-stand"] {
+    --fitness-icon: #1689A0;
+}</code></pre>
 
             <p>
                 You can target the styling of sections within the card component using the
@@ -261,8 +274,8 @@ fitness-card::part(footer) {}</code></pre>
         </p>
 
         <script type="module">
-            import '../src/FitnessCard.js';
-            import '../src/FitnessRing.js';
+            import './FitnessCard.js';
+            import './FitnessRing.js';
         </script>
     </body>
 </html>
