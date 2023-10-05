@@ -73,6 +73,14 @@ code {
     justify-content: space-evenly;
 }
 
+.ring-examples h3 {
+    margin-bottom: 0.75rem;
+}
+.ring-examples h3 + p {
+    margin-top: -1rem;
+    margin-bottom: 0.75rem;
+}
+
 .ring-examples div {
     flex: 1;
     min-width: 200px;
@@ -155,4 +163,14 @@ fitness-card.white {
     --fitness-move: #F2B5D4;
     --fitness-exercise: #AAEFDF;
     --fitness-stand: #7BDFF2;
+}
+
+fitness-ring.muted [slot="icon-move"] {
+    --fitness-icon: #B31162;
+}
+fitness-ring.muted [slot="icon-exercise"] {
+    --fitness-icon: #1FAD8F;
+}
+fitness-ring.muted [slot="icon-stand"] {
+    --fitness-icon: #1689A0;
 }

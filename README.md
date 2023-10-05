@@ -2,9 +2,9 @@
 
 # Fitness Components
 
-This provides two Web Components for fitness visualisations. The default ring
-design is inspired by Apple Fitness. You can use a fully featured card or just
-the rings.
+This provides two Web Components for fitness visualisations. You can use a fully
+featured “fitness card” or just the activity rings on their own. The default
+activity ring design is inspired by Apple Fitness.
 
 ## Installation
 
@@ -57,17 +57,21 @@ this is converted to *miles* but you can change this to kilometres using
 ></fitness-ring>
 ```
 
-You can also provide a custom header by using the named slot. If a `date`
-attribute is set, then this will be used it.
+You can provide a custom header by using the named `<slot>`. You can also change
+the text for “move”, “exercise” and “stand”.
 
 ```html
 <fitness-card>
   <div slot="header">The Custom Header</div>
+  <div slot="move">Move</div>
+  <div slot="exercise">Exercise</div>
+  <div slot="stand">Stand</div>
 </fitness-card>
 ```
 
-You can control the font and colours of the card and rings using CSS variables.
-The `--fitness-value` controls the colour of the *values* in the footer.
+The typeface and colours of the text and rings can be altered using CSS
+variables. The `--fitness-value` controls the colour of the *values* in the
+footer.
 
 ```css
 --fitness-font: sans-serif;
@@ -82,8 +86,22 @@ The `--fitness-value` controls the colour of the *values* in the footer.
 --fitness-ring-stand: #1eeaef;
 ```
 
-You can target the styling of sections within the card component using the
-`::part` pseudo-element.
+If you provide icons, they can be styled using `--fitness-icon`.
+
+```css
+fitness-ring [slot="icon-move"] {
+    --fitness-icon: #B31162;
+}
+fitness-ring [slot="icon-exercise"] {
+    --fitness-icon: #1FAD8F;
+}
+fitness-ring [slot="icon-stand"] {
+    --fitness-icon: #1689A0;
+}
+```
+
+You can target the styling of sections within the fitness card component using
+the `::part` pseudo-element.
 
 ```css
 fitness-card::part(header) {}

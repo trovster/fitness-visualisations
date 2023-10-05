@@ -271,21 +271,21 @@ export default class FitnessCard extends HTMLElement {
   stats = () => `
     <dl part="stats">
       <div>
-        <dt>Move</dt>
+        <dt><slot name="move">Move</slot></dt>
         <dd class="text-move">
           ${this.move()}<abbr title="Kilocalories">Kcal</abbr>
         </dd>
       </div>
 
       <div>
-        <dt>Exercise</dt>
+        <dt><slot name="exercise">Exercise</slot></dt>
         <dd class="text-exercise">
           ${this.exercise()}<abbr title="Minutes">min</abbr>
         </dd>
       </div>
 
       <div>
-        <dt>Stand</dt>
+        <dt><slot name="stand">Stand</slot></dt>
         <dd class="text-stand">
           ${this.stand()}<abbr title="Hours">hrs</abbr>
         </dd>
@@ -351,7 +351,11 @@ export default class FitnessCard extends HTMLElement {
           exercise-goal="${this.getAttribute('exercise-goal')}"
           stand-total="${this.getAttribute('stand-total')}"
           stand-goal="${this.getAttribute('stand-goal')}"
-        ></fitness-ring>
+        >
+          <slot slot="icon-move" name="icon-move"></slot>
+          <slot slot="icon-exercise" name="icon-exercise"></slot>
+          <slot slot="icon-stand" name="icon-stand"></slot>
+        </fitness-ring>
       </div>
 
       ${this.footer()}

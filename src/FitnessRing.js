@@ -54,6 +54,7 @@ export default class FitnessRing extends HTMLElement {
         --fitness-ring-exercise: #92e82a;
         --fitness-ring-stand: #1eeaef;
 
+        position: relative;
         display: block;
         width: 100%;
       }
@@ -70,29 +71,17 @@ export default class FitnessRing extends HTMLElement {
       circle.base {
         opacity: 0.25;
       }
-      circle.total {
-        display: none;
-      }
       .move circle {
         stroke: var(--fitness-move, var(--fitness-ring-move));
         transform: translate(50%, 50%);
       }
       .exercise circle {
-        transform: translate(50%, 50%) scale(0.75);
         stroke: var(--fitness-exercise, var(--fitness-ring-exercise));
+        transform: translate(50%, 50%) scale(0.75);
       }
       .stand circle {
         stroke: var(--fitness-stand, var(--fitness-ring-stand));
         transform: translate(50%, 50%) scale(0.5);
-      }
-      .move feDropShadow {
-        flood-color: var(--fitness-move, var(--fitness-ring-move));
-      }
-      .exercise feDropShadow {
-        flood-color: var(--fitness-exercise, var(--fitness-ring-exercise));
-      }
-      .stand feDropShadow {
-        flood-color: var(--fitness-stand, var(--fitness-ring-stand));
       }
       .viewed .move circle {
         animation: ring 1450ms ease-in-out 50ms forwards;
@@ -102,6 +91,28 @@ export default class FitnessRing extends HTMLElement {
       }
       .viewed .stand circle {
         animation: ring 950ms ease-in-out 550ms forwards;
+      }
+      .icons {
+        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      }
+      .icons ::slotted(*) {
+        --fitness-icon: #fff;
+
+        position: absolute; left: 50%;
+        margin-left: -3%;
+        height: 6%; width: 6%;
+        color: var(--fitness-icon);
+        fill: currentColor;
+        stroke: currentColor;
+      }
+      .icons ::slotted([slot="icon-move"]) {
+        top: 2.5%;
+      }
+      .icons ::slotted([slot="icon-exercise"]) {
+        top: 13.5%;
+      }
+      .icons ::slotted([slot="icon-stand"]) {
+        top: 25%;
       }
       @keyframes ring {
         to {
@@ -137,17 +148,6 @@ export default class FitnessRing extends HTMLElement {
               this.getAttribute('move-goal')
             )}, 100"
           ></circle>
-          <circle
-            stroke-width="3"
-            r="16"
-            class="total"
-            stroke-linecap="round"
-            stroke-dasharray="100, 100"
-            filter="url(#shadow-move)"
-          ></circle>
-          <filter id="shadow-move">
-            <feDropShadow dx="0" dy="0" stdDeviation="0" flood-opacity="0" />
-          </filter>
         </g>
 
         <g class="exercise">
@@ -165,17 +165,6 @@ export default class FitnessRing extends HTMLElement {
               this.getAttribute('exercise-goal')
             )}, 100"
           ></circle>
-          <circle
-            stroke-width="4"
-            r="16"
-            class="total"
-            stroke-linecap="round"
-            stroke-dasharray="100, 100"
-            filter="url(#shadow-exercise)"
-          ></circle>
-          <filter id="shadow-exercise">
-            <feDropShadow dx="0" dy="0" stdDeviation="0" flood-opacity="0" />
-          </filter>
         </g>
 
         <g class="stand">
@@ -193,19 +182,14 @@ export default class FitnessRing extends HTMLElement {
               this.getAttribute('stand-goal')
             )}, 100"
           ></circle>
-          <circle
-            stroke-width="6"
-            r="16"
-            class="total"
-            stroke-linecap="round"
-            stroke-dasharray="100, 100"
-            filter="url(#shadow-stand)"
-          ></circle>
-          <filter id="shadow-stand">
-            <feDropShadow dx="0" dy="0" stdDeviation="0" flood-opacity="0" />
-          </filter>
         </g>
       </svg>
+
+      <div class="icons">
+        <slot part="icon-move" name="icon-move"></slot>
+        <slot part="icon-exercise" name="icon-exercise"></slot>
+        <slot part="icon-stand" name="icon-stand"></slot>
+      </div>
     `;
   }
 }
