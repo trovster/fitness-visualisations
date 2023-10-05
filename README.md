@@ -28,8 +28,8 @@ must be imported before the custom elements can be used.
 Both the card and ring require the `move`, `exercise` and `stand` totals and goals.
 The card has additional optional values. If you include the date, it appears as
 a header. The `steps`, `distance` and `flights` data appear in the footer
-section. The distance attribute should be provided in **in meters**. By default,
-this is converted to *miles* but you can change this to kilometres using
+section. The distance attribute should be provided **in meters**. By default,
+this is converted to *miles*, but you can change this to kilometres using
 `units="km"`.
 
 ```html

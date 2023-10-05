@@ -266,7 +266,10 @@ export default class FitnessCard extends HTMLElement {
     `;
   }
 
-  header = () => `<slot part="header" name="header">${this.hasHeader() ? this.date(this.getAttribute('date')) : ''}</slot>`;
+  header = () =>
+    `<slot part="header" name="header">${
+      this.hasHeader() ? this.date(this.getAttribute('date')) : ''
+    }</slot>`;
 
   stats = () => `
     <dl part="stats">
