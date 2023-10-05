@@ -123,8 +123,9 @@ export default class FitnessRing extends HTMLElement {
         animation-delay: 550ms;
         animation-duration: 950ms;
       }
-      .reset.reset circle:not(.base) {
-        animation-delay: 0;
+      .reset.reset.reset circle:not(.base) {
+        animation-delay: 0ms;
+        animation-duration: 650ms;
         animation-fill-mode: backwards;
         animation-name: ring-reverse;
       }
