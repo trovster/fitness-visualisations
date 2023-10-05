@@ -57,6 +57,8 @@ this is converted to *miles*, but you can change this to kilometres using
 ></fitness-ring>
 ```
 
+### Custom Text
+
 You can provide a custom header by using the named `<slot>`. You can also change
 the text for “move”, “exercise” and “stand”.
 
@@ -69,9 +71,13 @@ the text for “move”, “exercise” and “stand”.
 </fitness-card>
 ```
 
+### Replayable
+
 The activity rings animation can be replayed when using the `replayable="true"`
 attribute. When the activity rings are clicked, the animation is replayed in
 reverse, then completed again.
+
+### Styling
 
 The typeface and colours of the text and rings can be altered using CSS
 variables. The `--fitness-value` controls the colour of the *values* in the
