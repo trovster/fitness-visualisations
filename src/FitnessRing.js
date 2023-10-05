@@ -181,7 +181,7 @@ export default class FitnessRing extends HTMLElement {
             stroke-dashoffset="${this.percentage(
               this.getAttribute('move-total'),
               this.getAttribute('move-goal')
-            )}"
+            ) - 1}"
             stroke-dasharray="${this.percentage(
               this.getAttribute('move-total'),
               this.getAttribute('move-goal')
@@ -198,7 +198,7 @@ export default class FitnessRing extends HTMLElement {
             stroke-dashoffset="${this.percentage(
               this.getAttribute('exercise-total'),
               this.getAttribute('exercise-goal')
-            )}"
+            ) - 1}"
             stroke-dasharray="${this.percentage(
               this.getAttribute('exercise-total'),
               this.getAttribute('exercise-goal')
@@ -215,7 +215,7 @@ export default class FitnessRing extends HTMLElement {
             stroke-dashoffset="${this.percentage(
               this.getAttribute('stand-total'),
               this.getAttribute('stand-goal')
-            )}"
+            ) - 1}"
             stroke-dasharray="${this.percentage(
               this.getAttribute('stand-total'),
               this.getAttribute('stand-goal')
