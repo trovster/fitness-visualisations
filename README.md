@@ -21,8 +21,8 @@ fitness card, then you do not need to import the activity ring.
 
 ```html
 <script type="module">
-  import 'fitness-visualisations/src/FitnessCard.js';
-  import 'fitness-visualisations/src/FitnessRing.js';
+  import '@trovster/fitness-visualisations/src/FitnessCard.js';
+  import '@trovster/fitness-visualisations/src/FitnessRing.js';
 </script>
 ```
 
