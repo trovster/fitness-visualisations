@@ -9,18 +9,18 @@
   ],
   "homepage": "https://trovster.github.io/fitness-visualisations/",
   "repository": {
-    "type" : "git",
-    "url" : "git+https://github.com/trovster/fitness-visualisations.git"
+    "type": "git",
+    "url": "git+https://github.com/trovster/fitness-visualisations.git"
   },
   "license": "MIT",
   "author": {
-    "name" : "Trevor Morris",
-    "url" : "https://www.trovster.com"
+    "name": "Trevor Morris",
+    "url": "https://www.trovster.com"
   },
   "scripts": {
-    "prestart": "npm run copy",
     "start": "web-dev-server",
-    "build": "npm run copy",
+    "build": "npm run copy && npm run path",
+    "path": "shx sed -i \"s/import '..\\/src\\//import '.\\//g\" ./docs/index.html",
     "copy": "node -e \"const fs = require('fs'); fs.copyFile('./src/FitnessRing.js', './docs/FitnessRing.js', function () {}); fs.copyFile('./src/FitnessCard.js', './docs/FitnessCard.js', function () {});\"",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore"
@@ -30,7 +30,8 @@
     "@web/dev-server": "^0.1.34",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "shx": "^0.3.4"
   },
   "eslintConfig": {
     "extends": [
