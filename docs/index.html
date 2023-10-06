@@ -18,20 +18,23 @@
                 steps="8409"
                 distance="5505"
                 flights="12"
-                move-total="612"
-                move-goal="650"
-                exercise-total="27"
-                exercise-goal="30"
-                stand-total="10"
-                stand-goal="12"
+                calories-total="612"
+                calories-goal="650"
+                minutes-total="27"
+                minutes-goal="30"
+                hours-total="10"
+                hours-goal="12"
             >
-                <svg slot="label-move" viewBox="0 0 20 20">
+                <div slot="calories">Move</div>
+                <div slot="minutes">Exercise</div>
+                <div slot="hours">Stand</div>
+                <svg slot="label-calories" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="label-exercise" viewBox="0 0 20 20">
+                <svg slot="label-minutes" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="label-stand" viewBox="0 0 20 20">
+                <svg slot="label-hours" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                 </svg>
             </fitness-card>
@@ -75,13 +78,13 @@ import './FitnessRing.js';</code></pre>
             <pre><code class="css">--fitness-font: sans-serif;
 
 --fitness-value: #9ca3af;
---fitness-move: #fa114f;
---fitness-exercise: #92e82a;
---fitness-stand: #1eeaef;
+--fitness-calories: #fa114f;
+--fitness-minutes: #92e82a;
+--fitness-hours: #1eeaef;
 
---fitness-ring-move: #fa114f;
---fitness-ring-exercise: #92e82a;
---fitness-ring-stand: #1eeaef;</code></pre>
+--fitness-ring-calories: #fa114f;
+--fitness-ring-minutes: #92e82a;
+--fitness-ring-hours: #1eeaef;</code></pre>
 
             <p>
                 If you provide labels, they can be styled using
@@ -90,13 +93,13 @@ import './FitnessRing.js';</code></pre>
                 <code>[slot]</code> selector and setting the CSS variable.
             </p>
 
-            <pre><code class="css">fitness-ring [slot="label-move"] {
+            <pre><code class="css">fitness-ring [slot="label-calories"] {
     --fitness-label: #B31162;
 }
-fitness-ring [slot="label-exercise"] {
+fitness-ring [slot="label-minutes"] {
     --fitness-label: #1FAD8F;
 }
-fitness-ring [slot="label-stand"] {
+fitness-ring [slot="label-hours"] {
     --fitness-label: #1689A0;
 }</code></pre>
 
@@ -121,23 +124,23 @@ fitness-card::part(footer) {}</code></pre>
             </p>
 
             <dl id="required-attributes">
-                <dt><code>move-total="integer"</code></dt>
-                <dd>The achieved “move” value.</dd>
-                <dt><code>move-goal="integer"</code></dt>
-                <dd>The goal for the “move” value.</dd>
+                <dt><code>calories-total="integer"</code></dt>
+                <dd>The achieved “calories” value.</dd>
+                <dt><code>calories-goal="integer"</code></dt>
+                <dd>The goal for the “calories” value.</dd>
                 <dd>Represented in kilocalories.</dd>
 
-                <dt><code>exercise-total="integer"</code></dt>
-                <dd>The achieved “exercise” value.</dd>
-                <dt><code>exercise-goal="integer"</code></dt>
-                <dd>The goal for the “exercise” value.</dd>
-                <dd>Represented in either miles or kilometres.</dd>
+                <dt><code>minutes-total="integer"</code></dt>
+                <dd>The achieved “minutes” value.</dd>
+                <dt><code>minutes-goal="integer"</code></dt>
+                <dd>The goal for the “minutes” value.</dd>
+                <dd>Represented in either minutes.</dd>
 
-                <dt><code>stand-total="integer"</code></dt>
-                <dd>The achieved “stand” value.</dd>
-                <dt><code>stand-goal="integer"</code></dt>
-                <dd>The goal for the “stand” value.</dd>
-                <dd>Represented in minutes.</dd>
+                <dt><code>hours-total="integer"</code></dt>
+                <dd>The achieved “hours” value.</dd>
+                <dt><code>hours-goal="integer"</code></dt>
+                <dd>The goal for the “hours” value.</dd>
+                <dd>Represented in hours.</dd>
             </dl>
 
             <p>
@@ -165,12 +168,12 @@ fitness-card::part(footer) {}</code></pre>
     distance="2455"
     units="mi"
     flights="3"
-    move-total="1800"
-    move-goal="1400"
-    exercise-total="20"
-    exercise-goal="30"
-    stand-total="9"
-    stand-goal="12"
+    calories-total="1800"
+    calories-goal="1400"
+    minutes-total="20"
+    minutes-goal="30"
+    hours-total="9"
+    hours-goal="12"
 &#62;&#60;/fitness-card&#62;</code></pre>
 
             <h3>Default Visualisation</h3>
@@ -185,12 +188,12 @@ fitness-card::part(footer) {}</code></pre>
                 steps="5258"
                 distance="2455"
                 flights="3"
-                move-total="1800"
-                move-goal="1400"
-                exercise-total="20"
-                exercise-goal="30"
-                stand-total="9"
-                stand-goal="12"
+                calories-total="1800"
+                calories-goal="1400"
+                minutes-total="20"
+                minutes-goal="30"
+                hours-total="9"
+                hours-goal="12"
             ></fitness-card>
 
             <h3>Distance in Kilometres, Custom Background &#38; Labels</h3>
@@ -198,8 +201,10 @@ fitness-card::part(footer) {}</code></pre>
                 This example of the fitness card visualisation shows a custom design,
                 <span class="note">inspired by the Apple Fitness interface</span>.
                 The background, header and footer have been styled in CSS.
+                The text for “calories”, “minutes” and “hours” have been changed.
                 The units have been changed to kilometres and mini
-                <a href="https://herolabels.com">Heroicons</a> labels have been added.
+                <a href="https://herolabels.com">Heroicons</a> labels have been added
+                to the activity ring.
             </p>
 
             <fitness-card
@@ -209,20 +214,23 @@ fitness-card::part(footer) {}</code></pre>
                 distance="5505"
                 units="km"
                 flights="6"
-                move-total="500"
-                move-goal="650"
-                exercise-total="24"
-                exercise-goal="30"
-                stand-total="14"
-                stand-goal="12"
+                calories-total="500"
+                calories-goal="650"
+                minutes-total="24"
+                minutes-goal="30"
+                hours-total="14"
+                hours-goal="12"
             >
-                <svg slot="label-move" viewBox="0 0 20 20">
+                <div slot="calories">Move</div>
+                <div slot="minutes">Exercise</div>
+                <div slot="hours">Stand</div>
+                <svg slot="label-calories" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="label-exercise" viewBox="0 0 20 20">
+                <svg slot="label-minutes" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="label-stand" viewBox="0 0 20 20">
+                <svg slot="label-hours" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                 </svg>
             </fitness-card>
@@ -230,7 +238,7 @@ fitness-card::part(footer) {}</code></pre>
             <h3>Header Text, No Footer, Custom Style</h3>
             <p>
                 This shows the fitness card visualisation with a custom header text and
-                no footer. The text for “exercise” and “stand” have been changed.
+                no footer. The text for “minutes” and “hours” have been changed.
                 The <code>replayable</code> attribute has been set, which allows
                 the animation to be replayed when the rings are clicked.
                 The font has been updated to a sans-serif typeface and the
@@ -240,16 +248,16 @@ fitness-card::part(footer) {}</code></pre>
             <fitness-card
                 class="contained white muted sans-serif"
                 replayable="true"
-                move-total="55"
-                move-goal="650"
-                exercise-total="2"
-                exercise-goal="10"
-                stand-total="4"
-                stand-goal="8"
+                calories-total="55"
+                calories-goal="650"
+                minutes-total="2"
+                minutes-goal="10"
+                hours-total="4"
+                hours-goal="8"
             >
                 <div slot="header">Goals for 22nd August 2023</div>
-                <div slot="exercise">Running</div>
-                <div slot="stand">Sleep</div>
+                <div slot="minutes">Running</div>
+                <div slot="hours">Sleep</div>
             </fitness-card>
         </div>
 
@@ -265,12 +273,12 @@ fitness-card::part(footer) {}</code></pre>
             </p>
 
             <pre><code>&#60;fitness-ring
-    move-total="1800"
-    move-goal="1400"
-    exercise-total="20"
-    exercise-goal="30"
-    stand-total="9"
-    stand-goal="12"
+    calories-total="1800"
+    calories-goal="1400"
+    minutes-total="20"
+    minutes-goal="30"
+    hours-total="9"
+    hours-goal="12"
 &#62;&#60;/fitness-ring&#62;</code></pre>
 
             <div id="ring-examples">
@@ -278,12 +286,12 @@ fitness-card::part(footer) {}</code></pre>
                     <h3>Default</h3>
                     <p>The regular ring design</p>
                     <fitness-ring
-                        move-total="500"
-                        move-goal="650"
-                        exercise-total="24"
-                        exercise-goal="30"
-                        stand-total="14"
-                        stand-goal="12"
+                        calories-total="500"
+                        calories-goal="650"
+                        minutes-total="24"
+                        minutes-goal="30"
+                        hours-total="14"
+                        hours-goal="12"
                     ></fitness-ring>
                 </div>
                 <div>
@@ -291,20 +299,20 @@ fitness-card::part(footer) {}</code></pre>
                     <p>With icons</p>
                     <fitness-ring
                         replayable="true"
-                        move-total="500"
-                        move-goal="650"
-                        exercise-total="24"
-                        exercise-goal="30"
-                        stand-total="14"
-                        stand-goal="12"
+                        calories-total="500"
+                        calories-goal="650"
+                        minutes-total="24"
+                        minutes-goal="30"
+                        hours-total="14"
+                        hours-goal="12"
                     >
-                        <svg slot="label-move" viewBox="0 0 20 20">
+                        <svg slot="label-calories" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                         </svg>
-                        <svg slot="label-exercise" viewBox="0 0 20 20">
+                        <svg slot="label-minutes" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                         </svg>
-                        <svg slot="label-stand" viewBox="0 0 20 20">
+                        <svg slot="label-hours" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                         </svg>
                     </fitness-ring>
@@ -315,12 +323,12 @@ fitness-card::part(footer) {}</code></pre>
                     <p>Custom colours via CSS</p>
                     <fitness-ring
                         class="alternative"
-                        move-total="450"
-                        move-goal="550"
-                        exercise-total="55"
-                        exercise-goal="60"
-                        stand-total="9"
-                        stand-goal="12"
+                        calories-total="450"
+                        calories-goal="550"
+                        minutes-total="55"
+                        minutes-goal="60"
+                        hours-total="9"
+                        hours-goal="12"
                     >
                 </fitness-ring>
                 </div>
@@ -330,21 +338,21 @@ fitness-card::part(footer) {}</code></pre>
                     <p>With coloured icons</p>
                     <fitness-ring
                         class="muted"
-                        move-total="450"
-                        move-goal="550"
-                        exercise-total="55"
-                        exercise-goal="60"
-                        stand-total="9"
-                        stand-goal="12"
+                        calories-total="450"
+                        calories-goal="550"
+                        minutes-total="55"
+                        minutes-goal="60"
+                        hours-total="9"
+                        hours-goal="12"
                     >
-                        <svg slot="label-move" viewBox="0 0 20 20">
+                        <svg slot="label-calories" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                         </svg>
-                        <svg slot="label-exercise" viewBox="0 0 20 20">
+                        <svg slot="label-minutes" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                             <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                         </svg>
-                        <svg slot="label-stand" viewBox="0 0 20 20">
+                        <svg slot="label-hours" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd" />
                         </svg>
                     </fitness-ring>

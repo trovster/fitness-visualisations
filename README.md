@@ -26,12 +26,12 @@ fitness card, then you do not need to import the activity ring.
 </script>
 ```
 
-Both the card and ring require the `move`, `exercise` and `stand` totals and goals.
-The card has additional optional values. If you include the date, it appears as
-a header. The `steps`, `distance` and `flights` data appear in the footer
-section. The distance attribute should be provided **in meters**. By default,
-this is converted to *miles*, but you can change this to kilometres using
-`units="km"`.
+Both the card and ring require the `calories`, `minutes` and `hours` totals and
+goals. The card has additional optional values. If you include the date, it
+appears as a header. The `steps`, `distance` and `flights` data appear in the
+footer section. The distance attribute should be provided **in meters**. By
+default, this is converted to *miles*, but you can change this to kilometres
+using `units="km"`.
 
 ```html
 <fitness-card
@@ -40,35 +40,35 @@ this is converted to *miles*, but you can change this to kilometres using
   steps="0"
   distance="0"
   flights="0"
-  move-total="0"
-  move-goal="0"
-  exercise-total="0"
-  exercise-goal="0"
-  stand-total="0"
-  stand-goal="0"
+  calories-total="0"
+  calories-goal="0"
+  minutes-total="0"
+  minutes-goal="0"
+  hours-total="0"
+  hours-goal="0"
 ></fitness-card>
 
 <fitness-ring
-  move-total="0"
-  move-goal="0"
-  exercise-total="0"
-  exercise-goal="0"
-  stand-total="0"
-  stand-goal="0"
+  calories-total="0"
+  calories-goal="0"
+  minutes-total="0"
+  minutes-goal="0"
+  hours-total="0"
+  hours-goal="0"
 ></fitness-ring>
 ```
 
 ### Custom Text
 
 You can provide a custom header by using the named `<slot>`. You can also change
-the text for “move”, “exercise” and “stand”.
+the text for “calories”, “minutes” and “hours”.
 
 ```html
 <fitness-card>
   <div slot="header">The Custom Header</div>
-  <div slot="move">Move</div>
-  <div slot="exercise">Exercise</div>
-  <div slot="stand">Stand</div>
+  <div slot="calories">Move</div>
+  <div slot="minutes">Exercise</div>
+  <div slot="hours">Stand</div>
 </fitness-card>
 ```
 
@@ -92,13 +92,13 @@ use the CSS variable without the `-ring` value.
 --fitness-font: sans-serif;
 
 --fitness-value: #9ca3af;
---fitness-move: #fa114f;
---fitness-exercise: #92e82a;
---fitness-stand: #1eeaef;
+--fitness-calories: #fa114f;
+--fitness-minutes: #92e82a;
+--fitness-hours: #1eeaef;
 
---fitness-ring-move: #fa114f;
---fitness-ring-exercise: #92e82a;
---fitness-ring-stand: #1eeaef;
+--fitness-ring-calories: #fa114f;
+--fitness-ring-minutes: #92e82a;
+--fitness-ring-hours: #1eeaef;
 ```
 
 If you provide labels, they can be styled using `--fitness-label` CSS variable.
@@ -106,13 +106,13 @@ You can target each label independently by using the appropriate `[slot]`
 selector and setting the CSS variable.
 
 ```css
-fitness-ring [slot="label-move"] {
+fitness-ring [slot="label-calories"] {
     --fitness-label: #B31162;
 }
-fitness-ring [slot="label-exercise"] {
+fitness-ring [slot="label-minutes"] {
     --fitness-label: #1FAD8F;
 }
-fitness-ring [slot="label-stand"] {
+fitness-ring [slot="label-hours"] {
     --fitness-label: #1689A0;
 }
 ```

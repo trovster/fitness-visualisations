@@ -1,11 +1,11 @@
 export default class FitnessRing extends HTMLElement {
   static observedAttributes = [
-    'move-total',
-    'move-goal',
-    'exercise-goal',
-    'exercise-total',
-    'stand-goal',
-    'stand-total',
+    'calories-total',
+    'calories-goal',
+    'minutes-goal',
+    'minutes-total',
+    'hours-goal',
+    'hours-total',
   ];
 
   constructor() {
@@ -75,9 +75,9 @@ export default class FitnessRing extends HTMLElement {
   style() {
     return `
       :host {
-        --fitness-ring-move: #fa114f;
-        --fitness-ring-exercise: #92e82a;
-        --fitness-ring-stand: #1eeaef;
+        --fitness-ring-calories: #fa114f;
+        --fitness-ring-minutes: #92e82a;
+        --fitness-ring-hours: #1eeaef;
 
         position: relative;
         display: block;
@@ -96,30 +96,30 @@ export default class FitnessRing extends HTMLElement {
       circle.base {
         opacity: 0.25;
       }
-      .move circle {
-        stroke: var(--fitness-move, var(--fitness-ring-move));
+      .calories circle {
+        stroke: var(--fitness-calories, var(--fitness-ring-calories));
         transform: translate(50%, 50%);
       }
-      .exercise circle {
-        stroke: var(--fitness-exercise, var(--fitness-ring-exercise));
+      .minutes circle {
+        stroke: var(--fitness-minutes, var(--fitness-ring-minutes));
         transform: translate(50%, 50%) scale(0.75);
       }
-      .stand circle {
-        stroke: var(--fitness-stand, var(--fitness-ring-stand));
+      .hours circle {
+        stroke: var(--fitness-hours, var(--fitness-ring-hours));
         transform: translate(50%, 50%) scale(0.5);
       }
       .visible circle:not(.base) {
         animation: ease-in-out forwards ring;
       }
-      .visible .move circle:not(.base) {
+      .visible .calories circle:not(.base) {
         animation-delay: 50ms;
         animation-duration: 1450ms;
       }
-      .visible .exercise circle:not(.base) {
+      .visible .minutes circle:not(.base) {
         animation-delay: 300ms;
         animation-duration: 1200ms;
       }
-      .visible .stand circle:not(.base) {
+      .visible .hours circle:not(.base) {
         animation-delay: 550ms;
         animation-duration: 950ms;
       }
@@ -142,13 +142,13 @@ export default class FitnessRing extends HTMLElement {
         fill: currentColor;
         stroke: currentColor;
       }
-      .labels ::slotted([slot="label-move"]) {
+      .labels ::slotted([slot="label-calories"]) {
         top: 2.5%;
       }
-      .labels ::slotted([slot="label-exercise"]) {
+      .labels ::slotted([slot="label-minutes"]) {
         top: 13.5%;
       }
-      .labels ::slotted([slot="label-stand"]) {
+      .labels ::slotted([slot="label-hours"]) {
         top: 25%;
       }
       @keyframes ring {
@@ -162,9 +162,9 @@ export default class FitnessRing extends HTMLElement {
         }
       }
       @media (prefers-reduced-motion) {
-        .move circle,
-        .exercise circle,
-        .stand circle {
+        .calories circle,
+        .minutes circle,
+        .hours circle {
           animation: none;
           stroke-dashoffset: 0;
         }
@@ -175,62 +175,62 @@ export default class FitnessRing extends HTMLElement {
   render() {
     return `
       <svg viewBox="0 0 36 36">
-        <g class="move">
+        <g class="calories">
           <circle stroke-width="3" r="16" class="base"></circle>
           <circle
             stroke-width="3"
             r="16"
             stroke-linecap="round"
             stroke-dashoffset="${this.percentage(
-              this.getAttribute('move-total'),
-              this.getAttribute('move-goal')
+              this.getAttribute('calories-total'),
+              this.getAttribute('calories-goal')
             ) - 1}"
             stroke-dasharray="${this.percentage(
-              this.getAttribute('move-total'),
-              this.getAttribute('move-goal')
+              this.getAttribute('calories-total'),
+              this.getAttribute('calories-goal')
             )}, 100"
           ></circle>
         </g>
 
-        <g class="exercise">
+        <g class="minutes">
           <circle stroke-width="4" r="16" class="base"></circle>
           <circle
             stroke-width="4"
             r="16"
             stroke-linecap="round"
             stroke-dashoffset="${this.percentage(
-              this.getAttribute('exercise-total'),
-              this.getAttribute('exercise-goal')
+              this.getAttribute('minutes-total'),
+              this.getAttribute('minutes-goal')
             ) - 1}"
             stroke-dasharray="${this.percentage(
-              this.getAttribute('exercise-total'),
-              this.getAttribute('exercise-goal')
+              this.getAttribute('minutes-total'),
+              this.getAttribute('minutes-goal')
             )}, 100"
           ></circle>
         </g>
 
-        <g class="stand">
+        <g class="hours">
           <circle stroke-width="6" r="16" class="base"></circle>
           <circle
             stroke-width="6"
             r="16"
             stroke-linecap="round"
             stroke-dashoffset="${this.percentage(
-              this.getAttribute('stand-total'),
-              this.getAttribute('stand-goal')
+              this.getAttribute('hours-total'),
+              this.getAttribute('hours-goal')
             ) - 1}"
             stroke-dasharray="${this.percentage(
-              this.getAttribute('stand-total'),
-              this.getAttribute('stand-goal')
+              this.getAttribute('hours-total'),
+              this.getAttribute('hours-goal')
             )}, 100"
           ></circle>
         </g>
       </svg>
 
       <div class="labels">
-        <slot part="label-move" name="label-move"></slot>
-        <slot part="label-exercise" name="label-exercise"></slot>
-        <slot part="label-stand" name="label-stand"></slot>
+        <slot part="label-calories" name="label-calories"></slot>
+        <slot part="label-minutes" name="label-minutes"></slot>
+        <slot part="label-hours" name="label-hours"></slot>
       </div>
     `;
   }

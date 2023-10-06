@@ -7,12 +7,12 @@ export default class FitnessCard extends HTMLElement {
     'steps',
     'distance',
     'flights',
-    'move-total',
-    'move-goal',
-    'exercise-goal',
-    'exercise-total',
-    'stand-goal',
-    'stand-total',
+    'calories-total',
+    'calories-goal',
+    'minutes-goal',
+    'minutes-total',
+    'hours-goal',
+    'hours-total',
   ];
 
   constructor() {
@@ -123,27 +123,27 @@ export default class FitnessCard extends HTMLElement {
   }
 
   // Fitness total/goal methods.
-  move = () =>
-    `${this.number(this.getAttribute('move-total'))}/${this.number(
-      this.getAttribute('move-goal')
+  calories = () =>
+    `${this.number(this.getAttribute('calories-total'))}/${this.number(
+      this.getAttribute('calories-goal')
     )}`;
 
-  exercise = () =>
-    `${this.number(this.getAttribute('exercise-total'))}/${this.number(
-      this.getAttribute('exercise-goal')
+  minutes = () =>
+    `${this.number(this.getAttribute('minutes-total'))}/${this.number(
+      this.getAttribute('minutes-goal')
     )}`;
 
-  stand = () =>
-    `${this.number(this.getAttribute('stand-total'))}/${this.number(
-      this.getAttribute('stand-goal')
+  hours = () =>
+    `${this.number(this.getAttribute('hours-total'))}/${this.number(
+      this.getAttribute('hours-goal')
     )}`;
 
   style() {
     return `
       :host {
-        --fitness-move: #fa114f;
-        --fitness-exercise: #92e82a;
-        --fitness-stand: #1eeaef;
+        --fitness-calories: #fa114f;
+        --fitness-minutes: #92e82a;
+        --fitness-hours: #1eeaef;
         --fitness-font: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
         --fitness-value: inherit;
 
@@ -174,14 +174,14 @@ export default class FitnessCard extends HTMLElement {
       .text-value {
         color: var(--fitness-value);
       }
-      .text-move {
-        color: var(--fitness-move);
+      .text-calories {
+        color: var(--fitness-calories);
       }
-      .text-exercise {
-        color: var(--fitness-exercise);
+      .text-minutes {
+        color: var(--fitness-minutes);
       }
-      .text-stand {
-        color: var(--fitness-stand);
+      .text-hours {
+        color: var(--fitness-hours);
       }
       abbr {
         font-size: 0.6em;
@@ -279,23 +279,23 @@ export default class FitnessCard extends HTMLElement {
   stats = () => `
     <dl part="stats">
       <div>
-        <dt><slot name="move">Move</slot></dt>
-        <dd class="text-move">
-          ${this.move()}<abbr title="Kilocalories">Kcal</abbr>
+        <dt><slot name="calories">Calories</slot></dt>
+        <dd class="text-calories">
+          ${this.calories()}<abbr title="Kilocalories">Kcal</abbr>
         </dd>
       </div>
 
       <div>
-        <dt><slot name="exercise">Exercise</slot></dt>
-        <dd class="text-exercise">
-          ${this.exercise()}<abbr title="Minutes">min</abbr>
+        <dt><slot name="minutes">Minutes</slot></dt>
+        <dd class="text-minutes">
+          ${this.minutes()}<abbr title="Minutes">min</abbr>
         </dd>
       </div>
 
       <div>
-        <dt><slot name="stand">Stand</slot></dt>
-        <dd class="text-stand">
-          ${this.stand()}<abbr title="Hours">hrs</abbr>
+        <dt><slot name="hours">Hours</slot></dt>
+        <dd class="text-hours">
+          ${this.hours()}<abbr title="Hours">hrs</abbr>
         </dd>
       </div>
     </dl>
@@ -354,16 +354,16 @@ export default class FitnessCard extends HTMLElement {
         <fitness-ring
           part="ring"
           replayable="${this.getAttribute('replayable')}"
-          move-total="${this.getAttribute('move-total')}"
-          move-goal="${this.getAttribute('move-goal')}"
-          exercise-total="${this.getAttribute('exercise-total')}"
-          exercise-goal="${this.getAttribute('exercise-goal')}"
-          stand-total="${this.getAttribute('stand-total')}"
-          stand-goal="${this.getAttribute('stand-goal')}"
+          calories-total="${this.getAttribute('calories-total')}"
+          calories-goal="${this.getAttribute('calories-goal')}"
+          minutes-total="${this.getAttribute('minutes-total')}"
+          minutes-goal="${this.getAttribute('minutes-goal')}"
+          hours-total="${this.getAttribute('hours-total')}"
+          hours-goal="${this.getAttribute('hours-goal')}"
         >
-          <slot slot="label-move" name="label-move"></slot>
-          <slot slot="label-exercise" name="label-exercise"></slot>
-          <slot slot="label-stand" name="label-stand"></slot>
+          <slot slot="label-calories" name="label-calories"></slot>
+          <slot slot="label-minutes" name="label-minutes"></slot>
+          <slot slot="label-hours" name="label-hours"></slot>
         </fitness-ring>
       </div>
 

@@ -162,24 +162,24 @@ fitness-card.white {
 }
 
 .alternative {
-    --fitness-ring-move: #30BCED;
-    --fitness-ring-exercise: #303036;
-    --fitness-ring-stand: #DE4D86;
+    --fitness-ring-calories: #30BCED;
+    --fitness-ring-minutes: #303036;
+    --fitness-ring-hours: #DE4D86;
 }
 
 .muted,
 .muted {
-    --fitness-move: #F2B5D4;
-    --fitness-exercise: #AAEFDF;
-    --fitness-stand: #7BDFF2;
+    --fitness-calories: #F2B5D4;
+    --fitness-minutes: #AAEFDF;
+    --fitness-hours: #7BDFF2;
 }
 
-fitness-ring.muted [slot="label-move"] {
+fitness-ring.muted [slot="label-calories"] {
     --fitness-label: #B31162;
 }
-fitness-ring.muted [slot="label-exercise"] {
+fitness-ring.muted [slot="label-minutes"] {
     --fitness-label: #1FAD8F;
 }
-fitness-ring.muted [slot="label-stand"] {
+fitness-ring.muted [slot="label-hours"] {
     --fitness-label: #1689A0;
 }
