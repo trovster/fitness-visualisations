@@ -25,13 +25,13 @@
                 stand-total="10"
                 stand-goal="12"
             >
-                <svg slot="icon-move" viewBox="0 0 20 20">
+                <svg slot="label-move" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="icon-exercise" viewBox="0 0 20 20">
+                <svg slot="label-exercise" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="icon-stand" viewBox="0 0 20 20">
+                <svg slot="label-stand" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                 </svg>
             </fitness-card>
@@ -84,20 +84,20 @@ import './FitnessRing.js';</code></pre>
 --fitness-ring-stand: #1eeaef;</code></pre>
 
             <p>
-                If you provide icons, they can be styled using
-                <code>--fitness-icon</code> CSS variable.
-                You can target each icon independently by using the appropriate
+                If you provide labels, they can be styled using
+                <code>--fitness-label</code> CSS variable.
+                You can target each label independently by using the appropriate
                 <code>[slot]</code> selector and setting the CSS variable.
             </p>
 
-            <pre><code class="css">fitness-ring [slot="icon-move"] {
-    --fitness-icon: #B31162;
+            <pre><code class="css">fitness-ring [slot="label-move"] {
+    --fitness-label: #B31162;
 }
-fitness-ring [slot="icon-exercise"] {
-    --fitness-icon: #1FAD8F;
+fitness-ring [slot="label-exercise"] {
+    --fitness-label: #1FAD8F;
 }
-fitness-ring [slot="icon-stand"] {
-    --fitness-icon: #1689A0;
+fitness-ring [slot="label-stand"] {
+    --fitness-label: #1689A0;
 }</code></pre>
 
             <p>
@@ -193,13 +193,13 @@ fitness-card::part(footer) {}</code></pre>
                 stand-goal="12"
             ></fitness-card>
 
-            <h3>Distance in Kilometres, Custom Background &#38; Icons</h3>
+            <h3>Distance in Kilometres, Custom Background &#38; Labels</h3>
             <p>
                 This example of the fitness card visualisation shows a custom design,
                 <span class="note">inspired by the Apple Fitness interface</span>.
                 The background, header and footer have been styled in CSS.
                 The units have been changed to kilometres and mini
-                <a href="https://heroicons.com">Heroicons</a> icons have been added.
+                <a href="https://herolabels.com">Heroicons</a> labels have been added.
             </p>
 
             <fitness-card
@@ -216,13 +216,13 @@ fitness-card::part(footer) {}</code></pre>
                 stand-total="14"
                 stand-goal="12"
             >
-                <svg slot="icon-move" viewBox="0 0 20 20">
+                <svg slot="label-move" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="icon-exercise" viewBox="0 0 20 20">
+                <svg slot="label-exercise" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                 </svg>
-                <svg slot="icon-stand" viewBox="0 0 20 20">
+                <svg slot="label-stand" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                 </svg>
             </fitness-card>
@@ -298,13 +298,13 @@ fitness-card::part(footer) {}</code></pre>
                         stand-total="14"
                         stand-goal="12"
                     >
-                        <svg slot="icon-move" viewBox="0 0 20 20">
+                        <svg slot="label-move" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path>
                         </svg>
-                        <svg slot="icon-exercise" viewBox="0 0 20 20">
+                        <svg slot="label-exercise" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 01.919-.53l4.78 1.281a.75.75 0 01.531.919l-1.281 4.78a.75.75 0 01-1.449-.387l.81-3.022a19.407 19.407 0 00-5.594 5.203.75.75 0 01-1.139.093L7 10.06l-4.72 4.72a.75.75 0 01-1.06-1.061l5.25-5.25a.75.75 0 011.06 0l3.074 3.073a20.923 20.923 0 015.545-4.931l-3.042-.815a.75.75 0 01-.53-.919z" clip-rule="evenodd"></path>
                         </svg>
-                        <svg slot="icon-stand" viewBox="0 0 20 20">
+                        <svg slot="label-stand" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd"></path>
                         </svg>
                     </fitness-ring>
@@ -337,14 +337,14 @@ fitness-card::part(footer) {}</code></pre>
                         stand-total="9"
                         stand-goal="12"
                     >
-                        <svg slot="icon-move" viewBox="0 0 20 20">
+                        <svg slot="label-move" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                         </svg>
-                        <svg slot="icon-exercise" viewBox="0 0 20 20">
+                        <svg slot="label-exercise" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                             <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                         </svg>
-                        <svg slot="icon-stand" viewBox="0 0 20 20">
+                        <svg slot="label-stand" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd" />
                         </svg>
                     </fitness-ring>
@@ -359,8 +359,8 @@ fitness-card::part(footer) {}</code></pre>
         </p>
 
         <script type="module">
-            import './FitnessCard.js';
-            import './FitnessRing.js';
+            import '../src/FitnessCard.js';
+            import '../src/FitnessRing.js';
         </script>
     </body>
 </html>

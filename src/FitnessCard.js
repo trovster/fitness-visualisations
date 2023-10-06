@@ -361,9 +361,9 @@ export default class FitnessCard extends HTMLElement {
           stand-total="${this.getAttribute('stand-total')}"
           stand-goal="${this.getAttribute('stand-goal')}"
         >
-          <slot slot="icon-move" name="icon-move"></slot>
-          <slot slot="icon-exercise" name="icon-exercise"></slot>
-          <slot slot="icon-stand" name="icon-stand"></slot>
+          <slot slot="label-move" name="label-move"></slot>
+          <slot slot="label-exercise" name="label-exercise"></slot>
+          <slot slot="label-stand" name="label-stand"></slot>
         </fitness-ring>
       </div>
 

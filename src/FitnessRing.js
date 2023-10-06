@@ -129,26 +129,26 @@ export default class FitnessRing extends HTMLElement {
         animation-fill-mode: backwards;
         animation-name: ring-reverse;
       }
-      .icons {
+      .labels {
         position: absolute; top: 0; right: 0; bottom: 0; left: 0;
       }
-      .icons ::slotted(*) {
-        --fitness-icon: #fff;
+      .labels ::slotted(*) {
+        --fitness-label: #fff;
 
         position: absolute; left: 50%;
         margin-left: -3%;
         height: 6%; width: 6%;
-        color: var(--fitness-icon);
+        color: var(--fitness-label);
         fill: currentColor;
         stroke: currentColor;
       }
-      .icons ::slotted([slot="icon-move"]) {
+      .labels ::slotted([slot="label-move"]) {
         top: 2.5%;
       }
-      .icons ::slotted([slot="icon-exercise"]) {
+      .labels ::slotted([slot="label-exercise"]) {
         top: 13.5%;
       }
-      .icons ::slotted([slot="icon-stand"]) {
+      .labels ::slotted([slot="label-stand"]) {
         top: 25%;
       }
       @keyframes ring {
@@ -227,10 +227,10 @@ export default class FitnessRing extends HTMLElement {
         </g>
       </svg>
 
-      <div class="icons">
-        <slot part="icon-move" name="icon-move"></slot>
-        <slot part="icon-exercise" name="icon-exercise"></slot>
-        <slot part="icon-stand" name="icon-stand"></slot>
+      <div class="labels">
+        <slot part="label-move" name="label-move"></slot>
+        <slot part="label-exercise" name="label-exercise"></slot>
+        <slot part="label-stand" name="label-stand"></slot>
       </div>
     `;
   }

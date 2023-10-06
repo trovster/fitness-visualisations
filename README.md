@@ -101,19 +101,19 @@ use the CSS variable without the `-ring` value.
 --fitness-ring-stand: #1eeaef;
 ```
 
-If you provide icons, they can be styled using `--fitness-icon` CSS variable.
-You can target each icon independently by using the appropriate `[slot]`
+If you provide labels, they can be styled using `--fitness-label` CSS variable.
+You can target each label independently by using the appropriate `[slot]`
 selector and setting the CSS variable.
 
 ```css
-fitness-ring [slot="icon-move"] {
-    --fitness-icon: #B31162;
+fitness-ring [slot="label-move"] {
+    --fitness-label: #B31162;
 }
-fitness-ring [slot="icon-exercise"] {
-    --fitness-icon: #1FAD8F;
+fitness-ring [slot="label-exercise"] {
+    --fitness-label: #1FAD8F;
 }
-fitness-ring [slot="icon-stand"] {
-    --fitness-icon: #1689A0;
+fitness-ring [slot="label-stand"] {
+    --fitness-label: #1689A0;
 }
 ```
 

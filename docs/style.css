@@ -174,12 +174,12 @@ fitness-card.white {
     --fitness-stand: #7BDFF2;
 }
 
-fitness-ring.muted [slot="icon-move"] {
-    --fitness-icon: #B31162;
+fitness-ring.muted [slot="label-move"] {
+    --fitness-label: #B31162;
 }
-fitness-ring.muted [slot="icon-exercise"] {
-    --fitness-icon: #1FAD8F;
+fitness-ring.muted [slot="label-exercise"] {
+    --fitness-label: #1FAD8F;
 }
-fitness-ring.muted [slot="icon-stand"] {
-    --fitness-icon: #1689A0;
+fitness-ring.muted [slot="label-stand"] {
+    --fitness-label: #1689A0;
 }
