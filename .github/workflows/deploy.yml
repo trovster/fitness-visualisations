@@ -35,7 +35,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Build
-        run: npm run build
+        run: npm i && npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
