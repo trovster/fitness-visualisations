@@ -67,7 +67,9 @@ export default class FitnessRing extends HTMLElement {
     this.observer.disconnect();
   }
 
-  replayable =() => this.getAttribute('replayable') && this.getAttribute('replayable') === 'true';
+  replayable = () =>
+    this.getAttribute('replayable') &&
+    this.getAttribute('replayable') === 'true';
 
   percentage = (total = 0, goal = 100, max = 100) =>
     Math.min(Math.floor((total / goal) * 100), max);
@@ -181,10 +183,12 @@ export default class FitnessRing extends HTMLElement {
             stroke-width="3"
             r="16"
             stroke-linecap="round"
-            stroke-dashoffset="${this.percentage(
-              this.getAttribute('calories-total'),
-              this.getAttribute('calories-goal')
-            ) - 1}"
+            stroke-dashoffset="${
+              this.percentage(
+                this.getAttribute('calories-total'),
+                this.getAttribute('calories-goal')
+              ) - 1
+            }"
             stroke-dasharray="${this.percentage(
               this.getAttribute('calories-total'),
               this.getAttribute('calories-goal')
@@ -198,10 +202,12 @@ export default class FitnessRing extends HTMLElement {
             stroke-width="4"
             r="16"
             stroke-linecap="round"
-            stroke-dashoffset="${this.percentage(
-              this.getAttribute('minutes-total'),
-              this.getAttribute('minutes-goal')
-            ) - 1}"
+            stroke-dashoffset="${
+              this.percentage(
+                this.getAttribute('minutes-total'),
+                this.getAttribute('minutes-goal')
+              ) - 1
+            }"
             stroke-dasharray="${this.percentage(
               this.getAttribute('minutes-total'),
               this.getAttribute('minutes-goal')
@@ -215,10 +221,12 @@ export default class FitnessRing extends HTMLElement {
             stroke-width="6"
             r="16"
             stroke-linecap="round"
-            stroke-dashoffset="${this.percentage(
-              this.getAttribute('hours-total'),
-              this.getAttribute('hours-goal')
-            ) - 1}"
+            stroke-dashoffset="${
+              this.percentage(
+                this.getAttribute('hours-total'),
+                this.getAttribute('hours-goal')
+              ) - 1
+            }"
             stroke-dasharray="${this.percentage(
               this.getAttribute('hours-total'),
               this.getAttribute('hours-goal')
