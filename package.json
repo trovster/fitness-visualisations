@@ -12,6 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/trovster/fitness-visualisations.git"
   },
+  "bugs": {
+    "url": "https://github.com/trovster/fitness-visualisations/issues"
+  },
+  "main": "src/FitnessCard.js",
+  "type": "module",
   "license": "MIT",
   "author": {
     "name": "Trevor Morris",
