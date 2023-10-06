@@ -9,7 +9,7 @@ activity ring design is inspired by Apple Fitness.
 ## Installation
 
 ```bash
-npm install git+https://github.com/trovster/fitness-visualisations.git --save
+npm install @trovster/fitness-visualisations --save
 ```
 
 ## Usage
