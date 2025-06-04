@@ -71,8 +71,8 @@ export default class FitnessRing extends HTMLElement {
     this.getAttribute('replayable') &&
     this.getAttribute('replayable') === 'true';
 
-  percentage = (total = 0, goal = 100, max = 100) =>
-    Math.min(Math.floor((total / goal) * 100), max);
+  percentage = (total = 0, goal = 100) =>
+    Math.floor((total / goal) * 100);
 
   style() {
     return `
@@ -99,33 +99,39 @@ export default class FitnessRing extends HTMLElement {
         opacity: 0.25;
       }
       .calories circle {
-        stroke: var(--fitness-calories, var(--fitness-ring-calories));
         transform: translate(50%, 50%);
       }
+      .calories circle.base {
+        stroke: var(--fitness-calories, var(--fitness-ring-calories));
+      }
       .minutes circle {
-        stroke: var(--fitness-minutes, var(--fitness-ring-minutes));
         transform: translate(50%, 50%) scale(0.75);
       }
+      .minutes circle.base {
+        stroke: var(--fitness-minutes, var(--fitness-ring-minutes));
+      }
       .hours circle {
-        stroke: var(--fitness-hours, var(--fitness-ring-hours));
         transform: translate(50%, 50%) scale(0.5);
       }
-      .visible circle:not(.base) {
+      .hours circle.base {
+        stroke: var(--fitness-hours, var(--fitness-ring-hours));
+      }
+      .visible circle.ring {
         animation: ease-in-out forwards ring;
       }
-      .visible .calories circle:not(.base) {
+      .visible .calories circle.ring {
         animation-delay: 50ms;
         animation-duration: 1450ms;
       }
-      .visible .minutes circle:not(.base) {
+      .visible .minutes circle.ring {
         animation-delay: 300ms;
         animation-duration: 1200ms;
       }
-      .visible .hours circle:not(.base) {
+      .visible .hours circle.ring {
         animation-delay: 550ms;
         animation-duration: 950ms;
       }
-      .reset.reset.reset circle:not(.base) {
+      .reset.reset.reset circle.ring {
         animation-delay: 0ms;
         animation-duration: 650ms;
         animation-fill-mode: backwards;
@@ -177,11 +183,33 @@ export default class FitnessRing extends HTMLElement {
   render() {
     return `
       <svg viewBox="0 0 36 36">
+        <defs>
+          <linearGradient id="calories-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="var(--fitness-calories, var(--fitness-ring-calories))" stop-opacity="1"/>
+            <stop offset="10%" stop-color="var(--fitness-calories, var(--fitness-ring-calories))" stop-opacity="0.8"/>
+            <stop offset="80%" stop-color="var(--fitness-calories, var(--fitness-ring-calories))" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="var(--fitness-calories, var(--fitness-ring-calories))" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="minutes-gradient" x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="var(--fitness-minutes, var(--fitness-ring-minutes))" stop-opacity="1"/>
+            <stop offset="10%" stop-color="var(--fitness-minutes, var(--fitness-ring-minutes))" stop-opacity="0.8"/>
+            <stop offset="80%" stop-color="var(--fitness-minutes, var(--fitness-ring-minutes))" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="var(--fitness-minutes, var(--fitness-ring-minutes))" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="hours-gradient" gradientUnits="objectBoundingBox">
+            <stop offset="0%" stop-color="var(--fitness-hours, var(--fitness-ring-hours))" stop-opacity="1"/>
+            <stop offset="10%" stop-color="var(--fitness-hours, var(--fitness-ring-hours))" stop-opacity="0.8"/>
+            <stop offset="80%" stop-color="var(--fitness-hours, var(--fitness-ring-hours))" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="var(--fitness-hours, var(--fitness-ring-hours))" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
         <g class="calories">
-          <circle stroke-width="3" r="16" class="base"></circle>
-          <circle
-            stroke-width="3"
+          <circle class="base" stroke-width="3" r="16"></circle>
+          <circle class="ring"
             r="16"
+            stroke="url(#calories-gradient)"
+            stroke-width="3"
             stroke-linecap="round"
             stroke-dashoffset="${
               this.percentage(
@@ -197,10 +225,11 @@ export default class FitnessRing extends HTMLElement {
         </g>
 
         <g class="minutes">
-          <circle stroke-width="4" r="16" class="base"></circle>
-          <circle
-            stroke-width="4"
+          <circle class="base" stroke-width="4" r="16"></circle>
+          <circle class="ring"
             r="16"
+            stroke="url(#minutes-gradient)"
+            stroke-width="4"
             stroke-linecap="round"
             stroke-dashoffset="${
               this.percentage(
@@ -216,10 +245,11 @@ export default class FitnessRing extends HTMLElement {
         </g>
 
         <g class="hours">
-          <circle stroke-width="6" r="16" class="base"></circle>
-          <circle
-            stroke-width="6"
+          <circle class="base" stroke-width="6" r="16"></circle>
+          <circle class="ring"
             r="16"
+            stroke="url(#hours-gradient)"
+            stroke-width="6"
             stroke-linecap="round"
             stroke-dashoffset="${
               this.percentage(
