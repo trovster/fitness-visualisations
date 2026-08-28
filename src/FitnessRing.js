@@ -71,8 +71,7 @@ export default class FitnessRing extends HTMLElement {
     this.getAttribute('replayable') &&
     this.getAttribute('replayable') === 'true';
 
-  percentage = (total = 0, goal = 100) =>
-    Math.floor((total / goal) * 100);
+  percentage = (total = 0, goal = 100) => Math.floor((total / goal) * 100);
 
   style() {
     return `

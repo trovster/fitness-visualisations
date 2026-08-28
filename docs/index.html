@@ -65,8 +65,11 @@ import './FitnessRing.js';</code></pre>
             <h2>Styling</h2>
             <p>
                 The typeface and colours of the text and rings can be changed using CSS
-                variables. The <code>--fitness-value</code> controls the colour of
-                the <em>values</em> in the footer.
+                variables. The <code>--fitness-font</code> controls the body text,
+                while <code>--fitness-display-font</code> controls the values and
+                falls back to <code>--fitness-font</code>. The
+                <code>--fitness-value</code> controls the colour of the
+                <em>values</em> in the footer.
             </p>
             <p>
                 The colours of the fitness card values are linked to the ring colours,
@@ -76,6 +79,7 @@ import './FitnessRing.js';</code></pre>
             </p>
 
             <pre><code class="css">--fitness-font: sans-serif;
+--fitness-display-font: sans-serif;
 
 --fitness-value: #9ca3af;
 --fitness-calories: #fa114f;

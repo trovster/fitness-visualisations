@@ -145,6 +145,7 @@ export default class FitnessCard extends HTMLElement {
         --fitness-minutes: #92e82a;
         --fitness-hours: #1eeaef;
         --fitness-font: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace;
+        --fitness-display-font: var(--fitness-font);
         --fitness-value: inherit;
 
         display: block;
@@ -168,6 +169,7 @@ export default class FitnessCard extends HTMLElement {
       }
       dd {
         margin: 0;
+        font-family: var(--fitness-display-font);
         font-size: 1.5rem;
         font-variant-numeric: tabular-nums;
       }

@@ -81,8 +81,9 @@ reverse, then completed again.
 ### Styling
 
 The typeface and colours of the text and rings can be changed using CSS
-variables. The `--fitness-value` controls the colour of the *values* in the
-footer.
+variables. The `--fitness-font` controls the body text, while
+`--fitness-display-font` controls the values and falls back to `--fitness-font`.
+The `--fitness-value` controls the colour of the *values* in the footer.
 
 The colours of the fitness card values are linked to the ring colours, so they
 can not be configured independently. To change the fitness card colours you must
@@ -90,6 +91,7 @@ use the CSS variable without the `-ring` value.
 
 ```css
 --fitness-font: sans-serif;
+--fitness-display-font: sans-serif;
 
 --fitness-value: #9ca3af;
 --fitness-calories: #fa114f;
